@@ -2,6 +2,7 @@
 {% block content %}
 {% load static %}
 <script src="https://kit.fontawesome.com/fbe819dd43.js" crossorigin="anonymous"></script>
+<script src="script.js"></script>
 <style>
 *,
 *::before,
@@ -11,7 +12,10 @@
   box-sizing: border-box;
 }
 body{
-  background-color:#d7dfee;
+  {% comment %} background-color:#d7dfee; {% endcomment %}
+  background-image: url('static/images/bg.jpg');
+  background-size: cover;
+  background-repeat: no-repeat;
 }
 
 .crm {
@@ -120,7 +124,7 @@ p {
   box-sizing: border-box;
   padding: 20px;
 }
-.footer .col h2 {
+.footer .col h3 {
   margin: 0;
   padding: 0;
   font-size: 15px;
@@ -258,8 +262,13 @@ $gradient      : #00B5F5;
     }
   
 }
+  .head{
+    height: 50vh;
+    text-align:center;
+  }
 
   .heading {
+    margin-top:70px;
     text-align:center;
     font-size: 40px;
     font-weight: bold;
@@ -274,9 +283,59 @@ $gradient      : #00B5F5;
     font-style: italic;
     text-shadow: 1px 1px 2px rgba(0, 0, 0, 0.5);
   }
+  .btn {
+    padding: 10px 20px;
+    font-size: 16px;
+    color: white;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    transition: background-color 0.3s;
+}
+.ftr {
+  display: flex;
+  align-items: center; /* Align items vertically */
+}
 
+.fcn {
+  flex: 1; /* Allow the container to grow to fill available space */
+}
 
+.text-container {
+  flex: 1; /* Allow the text container to grow to fill available space */
+  padding-left: 0px; /* Adjust as needed */
+}
 
+h2 {
+  color: #1e416c;
+  font-size: 30px;
+  font-weight: bold;
+  text-transform: uppercase;
+  font-family: Arial, sans-serif;
+  {% comment %} text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.3); {% endcomment %}
+  letter-spacing: 1px;
+  font-family: 'Baloo Tamma', cursive;
+  transition: 4s;
+  text-shadow: -1px -1px 0px #d7dfee,
+    1px 1px 0px #d7dfee,
+    2px 2px 0px #00000055;
+}
+.card{
+  box-shadow: 0px 0px 20px rgba(0, 0, 0, 0.3);
+  background-color:#eed7c8;
+  border-radius:10px;
+  transition: transform 0.2s ease-in-out; 
+}
+.card:hover {
+  transform: scale(1.05); /* Scale the card on hover */
+}
+.card-body {
+  padding: 10px; /* You can adjust this value to reduce the gap */
+}
+
+.card-title {
+  margin-bottom: 5px; /* You can adjust this value to reduce the gap */
+}
 </style>
 <body>
     {% comment %} <div id="carouselExampleSlidesOnly" class="carousel slide" data-ride="carousel">
@@ -292,13 +351,16 @@ $gradient      : #00B5F5;
           </div>
         </div>
       </div> {% endcomment %}
-      <div>
-        <img class="d-block image-responsive" width='100%' height='450vh' src="{% static "images/crm.png" %}" alt="First slide">
-      </div><br>
-      <div class="head">
-        <h3 class="heading">Sell Smarter and Faster</h3>
-        <p class="sub-heading">Transform your sales with the world’s No.1 CRM solution.</p>
-      </div>
+        {% comment %} <div>
+          <img class="d-block fimg image-responsive" width='100%' height='450vh' src="{% static "images/crm.png" %}" alt="First slide">
+        </div><br> {% endcomment %}
+        <div class="head">
+          <h3 class="heading">Sell Smarter and Faster</h3>
+          <p class="sub-heading">Transform your sales with the world’s No.1 CRM solution.</p>
+          <p class="sub-heading">Interpersonal Synergy Suite: Elevating Engagement and Empowering Connections</p>
+          <p style="color:green;text-shadow: 1px 1px 2px rgba(0, 0, 0, 0.2);">Crafting Connections and Cultivating Relationships</p>
+          <button class="btn btn-primary">Get Started</button>
+        </div>
       <div class="crm d-flex">
         <h1 class="block-effect" style="--td: 1.2s">
             <div class="block-reveal" style="--bc: linear-gradient(90deg, rgba(2,0,36,1) 0%, rgba(39,97,121,1) 35%, rgba(0,212,255,1) 100%);; --d: .1s">What is CRM?</div>
@@ -314,12 +376,115 @@ $gradient      : #00B5F5;
                 preferences, and needs, enabling personalized communication and targeted marketing efforts. Ultimately, 
                 CRM facilitates better customer engagement, retention, and ultimately, business growth.</i></p>
         </div>
+    </div><br>
+  
+
+    <div class="d-flex container ftr">
+      <div class="container fcn">
+        <img class="d-block fimg image-responsive" width='80%' height='300vh' src="{% static "images/crmf.png" %}" alt="First slide">
+      </div>
+      <div class="text-container">
+        <h2>Features</h2>
+        <h5>Focused Client Relationship Management Capabilities</h5>
+      </div>
+    </div><br>
+    <br>
+    <div class="container">
+      <div class="container">
+        <div class="row">
+          <div class="col-md-6">
+            <div class="card-container">
+              <div class="card">
+                <div class="card-inner">
+                  <div class="card-front">
+                    <div class="card-body">
+                      <h5 class="card-title">Enable Automation</h5>
+                    </div>
+                  </div>
+                  <div class="card-back">
+                    <div class="card-body">
+                      <p class="card-text">Automate lead creation, team assignment, scheduled activities, and focus on what really matters.</p>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div><br>
+      
+      
+          <div class="col-md-6">
+            <div class="card-container">
+              <div class="card">
+                <div class="card-inner">
+                  <div class="card-front">
+                    <div class="card-body">
+                      <h5 class="card-title">AI lead scoring</h5>
+                    </div>
+                  </div>
+                  <div class="card-back">
+                    <div class="card-body">
+                      <p class="card-text">Too many leads? Our AI scores leads to ensure you always work on the right priorities.</p>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div><br>
+      
+        </div>
+      </div>
+      <br>
+      <div class="container">
+        <div class="row">
+          <div class="col-md-6">
+            <div class="card-container">
+              <div class="card">
+                <div class="card-inner">
+                  <div class="card-front">
+                    <div class="card-body">
+                      <h5 class="card-title">Reduce manual entry</h5>
+                    </div>
+                  </div>
+                  <div class="card-back">
+                    <div class="card-body">
+                      <p class="card-text">Send quotes in just a few clicks, manage your pipeline by drag-and-dropping, and more.</p>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div><br>
+      
+      
+          <div class="col-md-6">
+            <div class="card-container">
+              <div class="card">
+                <div class="card-inner">
+                  <div class="card-front">
+                    <div class="card-body">
+                      <h5 class="card-title">Manage leads</h5>
+                    </div>
+                  </div>
+                  <div class="card-back">
+                    <div class="card-body">
+                      <p class="card-text">Create, acquire, import, nurture, score, etc. Manage all aspects of your leads in a single place.</p>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+      
+        </div>
+      </div>
     </div>
+    
+    
     <footer style="margin-top: 100px;">
       <div class="footer">
         <div class="contain">
         <div class="col">
-          <h2>Company</h2>
+          <h3>Company</h3>
           <ul>
             <li>About us</li>
             <li> Our Mission</li>
@@ -327,13 +492,13 @@ $gradient      : #00B5F5;
           </ul>
         </div>
         <div class="col address">
-          <h2>Address</h2>
+          <h3>Address</h3>
           <ul>
             <li>Kakkanad, Cochin</li>
         </ul>
         </div>
         <div class="col">
-          <h2>Latest News</h2>
+          <h3>Latest News</h3>
           <ul>
               <li>Blog Updates</li>
               <li>Industry Insights</li>
@@ -341,7 +506,7 @@ $gradient      : #00B5F5;
           </ul>
       </div>
         <div class="col">
-          <h2>Contact</h2>
+          <h3>Contact</h3>
           <ul class="social-icons">
             <li class="sli"><a href="#"><i class="fa fa-instagram"></i></a></li>
             <li class="sli"><a href="#"><i class="fa fa-twitter"></i></a></li>
@@ -349,7 +514,7 @@ $gradient      : #00B5F5;
           </ul>
         </div>
         <div class="col">
-          <h2>Privacy Policy</h2>
+          <h3>Privacy Policy</h3>
           <ul>
               <li>Data Protection</li>
               <li>Terms of Use</li>
@@ -357,7 +522,7 @@ $gradient      : #00B5F5;
           </ul>
       </div>
         <div class="col">
-          <h2>FAQ</h2>
+          <h3>FAQ</h3>
           <ul>
               <li>Common Questions</li>
               <li>Help Center</li>
@@ -368,5 +533,6 @@ $gradient      : #00B5F5;
       </div>
       </div>
     </footer>
+
 </body>
 {% endblock %}
