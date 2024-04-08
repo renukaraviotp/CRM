@@ -1,0 +1,675 @@
+{% extends "sidebar.html" %}
+{% block content %}
+{% load static %}
+<script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+    <style>
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            margin: 0;
+            padding: 0;
+            background-color: #f5f5f5;
+        }
+        .mainc {
+            display: grid;
+            gap: 20px;
+            padding: 20px;
+            margin-top: 20px;
+        }
+
+        .card {
+            background-color: #fff;
+            border-radius: 10px;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+            padding: 20px;
+        }
+
+        .card h2 {
+            font-size: 1.5rem;
+            margin-bottom: 10px;
+        }
+
+
+        @media only screen and (min-width: 768px) {
+            .mainc {
+                grid-template-columns: repeat(2, 1fr);
+            }
+        }
+        .dashboard {
+            display: grid;
+            grid-template-columns: 1.5fr 2fr 1fr;
+            gap: 20px;
+            padding: 20px;
+          }
+          .dashboard > div {
+            border: 1px solid #ccc;
+            padding: 10px;
+          }
+          [role="progressbar"] {
+
+            --percentage: var(--value);
+            --primary: rgba(75, 192, 192);
+            --secondary: #c6f5f1;
+            --size: 100px;
+            animation: progress 2s 0.5s forwards;
+            width: 65%; 
+            aspect-ratio: 2 / 1;
+            border-radius: 50% / 100% 100% 0 0;
+            position: relative;
+            overflow: hidden;
+            display: flex;
+            align-items: flex-end;
+            justify-content: center;
+            margin-left: 50px;
+          }
+          
+          [role="progressbar"]::before {
+            content: "";
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: conic-gradient(from 0.75turn at 50% 100%, var(--primary) calc(var(--percentage) * 1% / 2), var(--secondary) calc(var(--percentage) * 1% / 2 + 0.1%));
+            mask: radial-gradient(at 50% 100%, white 55%, transparent 55.5%);
+            mask-mode: alpha;
+            -webkit-mask: radial-gradient(at 50% 100%, #0000 55%, #000 55.5%);
+            -webkit-mask-mode: alpha;
+          }
+          
+          [role="progressbar"]::after {
+            counter-reset: percentage var(--value);
+            content: counter(percentage) '%';
+            font-family: Helvetica, Arial, sans-serif;
+            font-size: calc(var(--size) / 5);
+            color: var(--primary);
+          }
+          .acard {
+            display: grid;
+            grid-template-columns: 1fr 1fr 1fr;
+            gap: 20px;
+            padding: 20px;
+          }
+          .acard > div {
+            border: 1px solid #ccc;
+            padding: 10px;
+          }
+          .first1 {
+            display: grid;
+            grid-template-columns: 1fr 1fr 1fr;
+            gap: 20px;
+            padding: 20px;
+          }
+          .first1 > div {
+            border: 1px solid #ccc;
+            padding: 10px;
+          }
+          .market-update-right i.fa.fa-users {
+            font-size: 2.5em;
+            color: #343A40;
+            background: #fff;
+            text-align: center;
+            border-radius: 49px;
+            -webkit-border-radius: 49px;
+            -moz-border-radius: 49px;
+            -o-border-radius: 49px;
+            line-height: 1.7em;
+          }
+          .market-update-right i.fa.fa-bar-chart {
+            font-size: 2.5em;
+            color: #343A40;
+            background: #fff;
+            text-align: center;
+            border-radius: 49px;
+            -webkit-border-radius: 49px;
+            -moz-border-radius: 49px;
+            -o-border-radius: 49px;
+            line-height: 1.7em;
+          }
+          .market-update-right i.fa.fa-money-bill-trend-up {
+            font-size: 3em;
+            color: #343A40;
+            background: #fff;
+            text-align: center;
+            border-radius: 49px;
+            -webkit-border-radius: 49px;
+            -moz-border-radius: 49px;
+            -o-border-radius: 49px;
+            line-height: 1.7em;
+          }
+          #archiveBox{
+            /* width: 100px;
+            height: 100px; */
+            transition: all 0.7s ease;
+            
+        }
+        /* #archiveBox.dragover{
+            height: 150px;
+            width: 150px;       
+            
+        } */
+        #archiveBox.drop{
+            height: 0px;
+            width: 0px;
+            transition: all 0.7s ease;
+        }
+        @media (min-width: 768px) {
+            #archiveIcon { 
+            position: relative;   
+            justify-self: center;
+            align-self: center;
+            padding: 5% 4%;
+            border-radius: 50%;
+            border: 2px solid rgba(255, 68, 0, 0.6);
+            background-color: rgba(255, 68, 0, 0.2);
+            transition: top 0.7s ease; 
+            
+        }
+        }
+    
+        @media (max-width: 768px) {
+            #archiveIcon{
+                position: relative;   
+                justify-self: center;
+                align-self: center;
+                padding: 50px 40px;
+                border-radius: 50%;
+                border: 2px solid rgba(255, 68, 0, 0.6);
+                background-color: rgba(255, 68, 0, 0.2);
+                transition: top 0.7s ease; 
+            }
+        }
+        #archiveIcon{
+            position: relative;   
+            justify-self: center;
+            align-self: center;
+            padding: 50px 40px;
+            border-radius: 50%;
+            border: 2px solid rgba(255, 68, 0, 0.6);
+            background-color: rgba(255, 68, 0, 0.2);
+            transition: top 0.7s ease; 
+        }
+        
+    
+    
+        #archiveBox.dragover #archiveIcon {
+        font-size: 2em; 
+        /* padding: 50% 35%; */
+        transition: font-size 0.7s ease; 
+        }
+        #archiveDiv{
+            display: none;               
+            transition: opacity 0.7s ease;
+        }
+        .cardbox{
+            /* border-radius: 15px; */
+            box-shadow: 2px 3px 3px grey;
+            padding: 5px;
+            /* background-color: rgba(20, 188, 168, 0.2); */
+        }
+        
+        .cardbox:hover{
+            box-shadow: 2px 8px 20px black;
+            top: -5px;
+        }
+        .cardbox a {
+            text-decoration: none;
+            color: black;
+            text-shadow: 1px 1px black;
+            background-color: transparent;
+        }
+        .cardbox a:hover{
+            
+            text-transform: uppercase;
+            font-weight: 500;
+            color: black;
+            
+        }
+    </style>
+<body>
+    <br>
+    <h3 style="text-align:center;">DASHBOARD</h3>
+    <div class="row">
+        <section class="card col-md-3 ml-5">
+            <div class="row">
+                <div class="col-md-8">
+                    <h4>Total Profit <br>$95,595</h4>
+                </div>
+                <div class="market-update-right">
+                    <i class="fa fa-money-bill-trend-up"></i>
+                </div>
+            </div>
+        </section>
+        <section class="card col-md-3 ml-5">
+            <div class="row">
+                <div class="col-md-8">
+                    <h4>Total Expenses <br>$12,789</h4>
+                </div>
+                <div class="market-update-right">
+                    <i class="fa fa-bar-chart"></i>
+                </div>
+            </div>
+        </section>
+        <section class="card col-md-3 ml-5">
+            <div class="row">
+                <div class="col-md-8">
+                    <h4>New Users <br>13,984</h4>
+                </div>
+                <div class="market-update-right">
+                    <i class="fa fa-users"></i>
+                </div>
+            </div>
+        </section>
+    </div>
+    {% comment %} <div class="first1">
+        <section class="card">
+            <div class="row">
+                <div class="col-md-8">
+                    <h4>Total Profit <br>$95,595</h4>
+                </div>
+                <div class="market-update-right">
+                    <i class="fa fa-money-bill-trend-up"></i>
+                </div>
+            </div>
+        </section>
+        <section class="card">
+            <div class="row">
+                <div class="col-md-8">
+                    <h4>Total Expenses <br>$12,789</h4>
+                </div>
+                <div class="market-update-right">
+                    <i class="fa fa-bar-chart"></i>
+                </div>
+            </div>
+        </section>
+        <section class="card">
+            <div class="row">
+                <div class="col-md-8">
+                    <h4>New Users <br>13,984</h4>
+                </div>
+                <div class="market-update-right">
+                    <i class="fa fa-users"></i>
+                </div>
+            </div>
+        </section>
+    </div> {% endcomment %}
+    <main class="container mainc">
+        <section id="revenue" class="card">
+            <h2>Revenue</h2>
+            <canvas id="revenueChart" width="400" height="200"></canvas>
+        </section>
+        <section class="card">
+            <h2>Lead Generation</h2>
+            <canvas id="leadGenerationChart" width="400" height="200"></canvas>
+        </section>
+    </main><br><br>
+    <div class="row">
+        <section id="user-activity" class="card col-md-4 ml-5 mr-1">
+            <h2 style="text-align:center">User Activity</h2>
+            <canvas id="userActivityChart" width="300" height="100"></canvas>
+        </section>
+        <section class="card col-md-4 ml-2 mr-1">
+            <h2 style="text-align:center">Products</h2>
+            <div class="container table-responsive">
+                <table class="table">
+                    <tr>
+                        <td>1</td>
+                        <td>Shirt <br> Men</td>
+                        <td>$ 30</td>
+                    </tr><tr>
+                        <td>2</td>
+                        <td>Top <br>Women</td>
+                        <td>$ 12</td>
+                    </tr>
+                    <tr>
+                        <td>3</td>
+                        <td>Hoodie <br>Unisex</td>
+                        <td>$ 25</td>
+                    </tr>
+                    <tr>
+                        <td>4</td>
+                        <td>shoes <br>Men</td>
+                        <td>$ 45</td>
+                    </tr>
+                </table>
+            </div>
+        </section>
+        <section class="card col-md-3 ml-2 mr-1">
+            <div class="row d-flex justify-content-center" style="height: 10vh;">
+                <img src="{% static 'images/user.jpg' %}" class="p-2" width="80" height="80" style="border-radius: 50px;bottom: 50px;position:relative;background-color: white;">
+                <h5>John Doe</h5>
+            </div>
+            <div class="row">
+                <div class="col"><center><span style="font-weight: 500;">3.7K</span> <br> <p style="color: gray;">Product</p></center></div>
+                <div class="col"><center><span style="font-weight: 500;">11.5K</span> <br> <p style="color: gray;">Followers</p></center></div>
+            </div>
+            <div class="row">
+                <div role="progressbar" aria-valuenow="92" aria-valuemin="0" aria-valuemax="100" style="--value: 92"></div>
+            </div>
+            <div class="row pb-3" style="display: flex;justify-content: center;">
+                <div style="width: 100%;display: flex;justify-content: center;"><h5>$ 35,000</h5></div>
+                
+                <div style="width: 100%;display: flex;justify-content: center;"><h6 style="color: gray;">Earning this month.</h6></div>
+            </div>
+            <div class="row pb-3">            
+                <a href="" class="ml-2 mt-3">More about John Doe...</a> 
+                
+            </div>
+        </section>
+    </div><br><br>
+    <!-- archive box -->
+<div class="row mt-5" id="archiveDiv"  >
+    <div id="archiveBox" class="col d-flex justify-content-center" >
+        <i id="archiveIcon" class="fa-solid fa-box-archive fa-fade fa-xl" style="color: orangered;"></i>
+    </div>
+</div>
+    {% comment %} <div class="acard">
+        <section class="card cardbox">
+            <div class="card-body" style="background-color: #e69191;border-radius:10px;">
+                <h4 class="card-title">$ 0.00</h4>
+                <h5 class="card-subtitle mb-2 text-muted">Free Trial</h5>
+                <h6>No Extra Benifits</h6>
+                <h6>Valid for 7 Days</h6>
+                <a href="#" class="card-link" style="color:green;">Purchase</a>
+              </div>
+        </section>
+        <section class="card cardbox">
+            <div class="card-body" style="background-color: #91e6a3;border-radius:10px;">
+                <h4 class="card-title">$ 0.00</h4>
+                <h5 class="card-subtitle mb-2 text-muted">Free Trial</h5>
+                <h6>No Extra Benifits</h6>
+                <h6>Valid for 7 Days</h6>
+                <a href="#" class="card-link" style="color:green;">Purchase</a>
+              </div>
+        </section>
+        <section class="card cardbox">
+            <div class="card-body" style="background-color: #f5d0d0;border-radius:10px;">
+                <h4 class="card-title">$ 0.00</h4>
+                <h5 class="card-subtitle mb-2 text-muted">Free Trial</h5>
+                <h6>No Extra Benifits</h6>
+                <h6>Valid for 7 Days</h6>
+                <a href="#" class="card-link" style="color:green;">Purchase</a>
+              </div>
+        </section>
+    </div> {% endcomment %}
+    <div class="row">
+        <section class="card cardbox col-md-3 ml-5 mr-2">
+            <div class="card-body" style="background-color: #e69191;border-radius:10px;gap:20px">
+                <h4 class="card-title">$ 0.00</h4>
+                <h5 class="card-subtitle mb-2 text-muted">Free Trial</h5>
+                <h6>No Extra Benifits</h6>
+                <h6>Valid for 7 Days</h6>
+                <a href="#" class="card-link" style="color:green;">Purchase</a>
+              </div>
+        </section>
+        <section class="card cardbox col-md-3 ml-5 mr-2">
+            <div class="card-body" style="background-color: #91e6a3;border-radius:10px;">
+                <h4 class="card-title">$ 49.70</h4>
+                <h5 class="card-subtitle mb-2 text-muted">Standard</h5>
+                <h6>No Extra Benifits</h6>
+                <h6>Valid for 1 Month</h6>
+                <a href="#" class="card-link" style="color:green;">Purchase</a>
+              </div>
+        </section>
+        <section class="card cardbox col-md-3 ml-5 mr-2">
+            <div class="card-body" style="background-color: #f5d0d0;border-radius:10px;">
+                <h4 class="card-title">$ 70.64</h4>
+                <h5 class="card-subtitle mb-2 text-muted">Premium</h5>
+                <h6>No Extra Benifits</h6>
+                <h6>Valid for 3 Months</h6>
+                <a href="#" class="card-link" style="color:green;">Purchase</a>
+              </div>
+        </section>
+    </div><br><br>
+    <script>
+        // Revenue Chart
+        var revenueData = {
+            labels: ['January', 'February', 'March', 'April', 'May', 'June'],
+            datasets: [{
+                label: 'Revenue ($)',
+                data: [10000, 15000, 20000, 25000, 30000, 35000],
+                backgroundColor: 'rgba(54, 162, 235, 0.2)',
+                borderColor: 'rgba(54, 162, 235, 1)',
+                borderWidth: 1
+            }]
+        };
+
+        var revenueChart = new Chart(document.getElementById('revenueChart'), {
+            type: 'line',
+            data: revenueData,
+            options: {
+                scales: {
+                    y: {
+                        beginAtZero: true
+                    }
+                }
+            }
+        });
+
+        // Lead Generation Chart
+        var leadGenerationData = {
+            labels: ['Website', 'Referrals', 'Events', 'Email Campaigns'],
+            datasets: [{
+                label: 'Conversion Rate (%)',
+                data: [40, 30, 20, 10],
+                backgroundColor: [
+                    'rgba(255, 99, 132, 0.2)',
+                    'rgba(54, 162, 235, 0.2)',
+                    'rgba(255, 206, 86, 0.2)',
+                    'rgba(75, 192, 192, 0.2)'
+                ],
+                borderColor: [
+                    'rgba(255, 99, 132, 1)',
+                    'rgba(54, 162, 235, 1)',
+                    'rgba(255, 206, 86, 1)',
+                    'rgba(75, 192, 192, 1)'
+                ],
+                borderWidth: 1
+            }]
+        };
+
+        var leadGenerationChart = new Chart(document.getElementById('leadGenerationChart'), {
+            type: 'bar',
+            data: leadGenerationData,
+            options: {
+                scales: {
+                    y: {
+                        beginAtZero: true
+                    }
+                }
+            }
+        });
+
+        // User Activity Chart (Hollow Pie Chart)
+        var userActivityData = {
+            labels: ['Active Users', 'Inactive Users', 'Pending Users', 'Premium Users', 'Free Users'],
+            datasets: [{
+                label: 'User Activity',
+                data: [35, 20, 22, 10, 12],
+                backgroundColor: [
+                    'rgba(75, 192, 192)',
+                    'rgba(255, 99, 132)',
+                    'rgba(255, 205, 86)',
+                    'rgba(54, 162, 235)',
+                    'rgba(153, 102, 255)'
+                ],
+                borderColor: [
+                    'rgba(75, 192, 192, 1)',
+                    'rgba(255, 99, 132, 1)',
+                    'rgba(255, 205, 86, 1)',
+                    'rgba(54, 162, 235, 1)',
+                    'rgba(153, 102, 255, 1)'
+                ],
+                borderWidth: 1
+            }]
+        };
+
+        var userActivityChart = new Chart(document.getElementById('userActivityChart'), {
+            type: 'pie',
+            data: userActivityData,
+            options: {
+                cutout: '70%', // Adjust this value for the size of the hole
+                responsive: true,
+                plugins: {
+                    legend: {
+                        position: 'bottom'
+                    }
+                }
+            }
+        });
+    </script>
+    <script>
+        let cards = document.getElementsByClassName('cardbox');
+        let archiveBox = document.getElementById('archiveBox');
+        let archiveDiv = document.getElementById('archiveDiv');
+    
+        // Load archived cards from local storage
+        let archivedCards = JSON.parse(localStorage.getItem('archivedCards')) || [];
+    
+        // Function to save archived cards to local storage
+        function saveToLocalStorage() {
+            localStorage.setItem('archivedCards', JSON.stringify(archivedCards));
+        }
+    
+        // Function to handle dropping a card into the archive box
+        function handleDrop(selectedCard) {
+            selectedCard.style.display = 'none';
+            archiveDiv.style.display = 'none';
+            archivedCards.push(selectedCard.innerHTML); // Save card HTML content
+            saveToLocalStorage(); // Save to local storage
+            
+        }
+    
+        for (let card of cards) {
+        // Add dragstart event listener for desktop view
+        card.addEventListener("dragstart", function(e) {
+            archiveDiv.style.display = 'block'; // Display the archiveDiv
+            archiveDiv.style.opacity = '1';
+            let selected = e.target;
+    
+            archiveBox.addEventListener("dragover", function(e) {
+                e.preventDefault();
+            });
+    
+            card.addEventListener("dragend", function(e) {
+                archiveDiv.style.display = 'none';
+                selected = null;
+            });
+    
+            archiveBox.addEventListener("drop", function(e) {
+                e.preventDefault();
+                handleDrop(selected);
+            });
+        });
+    
+        // Add touchstart event listener
+        card.addEventListener("touchstart", function(e) {
+            // Prevent default touch behavior to avoid issues with touch events
+            e.preventDefault();
+            archiveDiv.style.display = 'block'; // Display the archiveDiv
+            archiveDiv.style.opacity = '1';
+            // Get the touch target
+            let touch = e.touches[0];
+            
+            // Store initial touch coordinates
+            card.setAttribute('data-touchstart-x', touch.clientX);
+            card.setAttribute('data-touchstart-y', touch.clientY);
+        });
+    
+        // Add touchmove event listener
+        card.addEventListener("touchmove", function(e) {
+            // Prevent default touch behavior to avoid issues with touch events
+            e.preventDefault();
+            
+            // Get the touch target
+            let touch = e.touches[0];
+            
+            // Calculate distance moved
+            let deltaX = touch.clientX - parseInt(card.getAttribute('data-touchstart-x'));
+            let deltaY = touch.clientY - parseInt(card.getAttribute('data-touchstart-y'));
+            
+            // Apply translation to the card's position
+            card.style.transform = `translate(${deltaX}px, ${deltaY}px)`;
+        });
+    
+        // Add touchend event listener
+        // card.addEventListener("touchend", function(e) {
+        //     // Reset card position after touchend
+        //     card.style.transform = 'translate(0px, 0px)';
+        //     archiveDiv.style.display = 'none'; // Hide the archiveDiv after touchend
+        //     handleDrop(card);
+            
+        // });
+    
+        card.addEventListener("touchend", function(e) {
+        // Reset card position after touchend
+        card.style.transform = 'translate(0px, 0px)';
+        setTimeout(function() {
+            archiveDiv.style.display = 'none';
+        }, 200); // Hide the archiveDiv after touchend
+        
+        // Get the touch position relative to the viewport
+        var touchX = e.changedTouches[0].clientX;
+        var touchY = e.changedTouches[0].clientY;
+        console.log("Touch position: X:", touchX, "Y:", touchY);
+        
+        // Check if the touch ended within the boundaries of the archiveDiv
+        var elementUnderTouch = document.elementFromPoint(touchX, touchY);
+        console.log("Element under touch:", elementUnderTouch);
+        if (elementUnderTouch.id === "archiveIcon") {
+            handleDrop(card);
+        }
+    });
+    
+    
+    
+        
+        
+    }
+    
+    
+        function hideArchivedCards() {
+        // Load archived cards from local storage
+        let archivedCards = JSON.parse(localStorage.getItem('archivedCards')) || [];
+        
+        // Iterate through each card
+        for (let card of cards) {
+            // Check if the card's inner HTML content is in the archived cards
+            if (archivedCards.includes(card.innerHTML)) {
+                card.style.display = 'none'; // Hide the card if it's archived
+            }
+        }
+    }
+    
+    // Call the function to hide archived cards when the page loads
+    window.addEventListener('load', hideArchivedCards);
+    
+    
+    
+    
+    
+    
+        
+       // dragover archivebox style
+    
+       let archiveIcon = document.getElementById('archiveIcon');
+    
+        archiveBox.addEventListener('dragover', function(event) {
+            event.preventDefault(); // Prevent default behavior
+            archiveBox.classList.add('dragover'); // Add 'dragover' class
+            
+        });
+    
+        archiveBox.addEventListener('dragleave', function(event) {
+            archiveBox.classList.remove('dragover'); // Remove 'dragover' class when leaving
+            
+        });
+    
+        archiveBox.addEventListener('drop', function(event) {
+            archiveBox.classList.remove('dragover'); // Remove 'dragover' class when leaving
+            
+        });
+        
+    </script>
+    
+</body>
+{% endblock %}
