@@ -23,23 +23,23 @@
     .nv a{
         color: black;
     }
-    .nitem {
+    .navitm {
     position: relative;
     
     }
-    .nitem::after {
+    .navitm::after {
         content: '';
         position: absolute;
         bottom: 0;
         left: 0;
         width: 0; 
         height: 2px;
-        background-color: #97E7E1;
+        background-color: #343a40;
         color: white;
         transition: width 0.3s ease; 
     }
 
-    .nitem:hover::after {
+    .navitm:hover::after {
         width: 75%; 
         
     }
@@ -73,7 +73,7 @@
     border-radius: 5px;
 }
 
-.nitem {
+.navitm {
     cursor: pointer; 
 }
 
@@ -113,22 +113,22 @@
                             <a style="text-decoration: none;" href="{% url "landpage" %}"><img src="{% static 'images/logo.png' %}" alt="logo" height="80"></a>   
                         </li>
                         <li class="nav-item px-3">
-                            <a class="nav-link nitem" id="link4" href="{% url "dashboard" %}">Dashboard</a>
+                            <a class="nav-link navitm" id="link4" href="{% url "dashboard" %}">Dashboard</a>
                         </li>
                         <li class="nav-item px-3">
-                            <a class="nav-link nitem" id="link5" href="{% url "archive" %}">Archive</a>
+                            <a class="nav-link navitm" id="link5" href="{% url "archive" %}">Archive</a>
                         </li>
                         <li class="nav-item ">
-                            <a class="nav-link nitem ml-md-3" href="#">Apps</a>
+                            <a class="nav-link navitm ml-md-3" href="#">Apps</a>
                           </li>
                           <li class="nav-item ">
-                            <a class="nav-link nitem ml-md-3" href="#">Community</a>
+                            <a class="nav-link navitm ml-md-3" href="#">Community</a>
                           </li>
                           <li class="nav-item ">
-                              <a class="nav-link nitem ml-md-3" href="#">Pricing</a>
+                              <a class="nav-link navitm ml-md-3" href="#">Pricing</a>
                           </li>
                           <li class="nav-item ">
-                            <a class="nav-link nitem ml-md-3" href="#">Contact</a>
+                            <a class="nav-link navitm ml-md-3" href="#">Contact</a>
                           </li>
                     </ul>
                 </div>
@@ -145,7 +145,7 @@
     // Function to handle click event
 function handleClick(event) {
     // Remove the 'active' class from all links
-    document.querySelectorAll('.nitem').forEach(link => {
+    document.querySelectorAll('.navitm').forEach(link => {
         link.classList.remove('active');
     });
 
@@ -157,7 +157,7 @@ function handleClick(event) {
 }
 
 // Add click event listener to each link
-document.querySelectorAll('.nitem').forEach(link => {
+document.querySelectorAll('.navitm').forEach(link => {
     link.addEventListener('click', handleClick);
 });
 

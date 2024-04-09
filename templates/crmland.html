@@ -335,6 +335,30 @@ h2 {
 .card-title {
   margin-bottom: 5px; /* You can adjust this value to reduce the gap */
 }
+.fpic {
+  display: flex;
+  {% comment %} justify-content: space-between; {% endcomment %}
+  {% comment %} align-items: center; {% endcomment %}
+}
+
+.fpic > div {
+  flex: 1;
+}
+
+.feature {
+  margin-bottom: 20px;
+}
+
+@media (max-width: 768px) {
+  .fpic{
+      flex-direction: column;
+  }
+
+  .feature {
+      text-align: center;
+  }
+}
+
 </style>
 <body>
     {% comment %} <div id="carouselExampleSlidesOnly" class="carousel slide" data-ride="carousel">
@@ -360,6 +384,7 @@ h2 {
           <p style="color:green;text-shadow: 1px 1px 2px rgba(0, 0, 0, 0.2);">Crafting Connections and Cultivating Relationships</p>
           <button class="btn btn-primary">Get Started</button>
         </div>
+        
       <div class="crm d-flex">
         <h1 class="block-effect" style="--td: 1.2s">
             <div class="block-reveal" style="--bc: linear-gradient(90deg, rgba(2,0,36,1) 0%, rgba(39,97,121,1) 35%, rgba(0,212,255,1) 100%);; --d: .1s">What is CRM?</div>
@@ -376,7 +401,8 @@ h2 {
                 CRM facilitates better customer engagement, retention, and ultimately, business growth.</i></p>
         </div>
     </div><br>
-  
+
+    
 
     <div class="d-flex container ftr">
       <div class="container fcn">
@@ -476,8 +502,30 @@ h2 {
       
         </div>
       </div>
+    </div><br><br><br><br>
+    <div class="display-flex fpic container" style="border:box;box-shadow: 0px 0px 20px rgba(0, 0, 0, 0.3);border-radius:10px;">
+      <div class="">
+        <img class="d-block fimg image-responsive" width='100%' height='350vh' src="{% static "images/crmm.png" %}">
+      </div>
+      <div style="">
+        <div class="feature mt-5">
+            <h2>Sales</h2>
+            <p>Track leads, manage contacts, and streamline your sales process with our CRM's sales management tools.</p>
+        </div>
+        <div class="feature">
+            <h2>Customer Service</h2>
+            <p>Deliver exceptional customer service experiences by managing support tickets, customer interactions, and feedback efficiently.</p>
+        </div>
+        <div class="feature">
+            <h2>Technical Support</h2>
+            <p>Resolve technical issues promptly and effectively by tracking tickets, managing resources, and providing comprehensive technical support.</p>
+        </div>
+        <div class="feature">
+            <h2>Marketing</h2>
+            <p>Drive targeted marketing campaigns, track campaign performance, and analyze customer behavior to optimize marketing strategies.</p>
+        </div>
+      </div>
     </div>
-    
     
     <footer style="margin-top: 100px;">
       <div class="footer">

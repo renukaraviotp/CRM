@@ -136,18 +136,11 @@
             -o-border-radius: 49px;
             line-height: 1.7em;
           }
-          #archiveBox{
-            /* width: 100px;
-            height: 100px; */
+          #archivebox{
             transition: all 0.7s ease;
             
         }
-        /* #archiveBox.dragover{
-            height: 150px;
-            width: 150px;       
-            
-        } */
-        #archiveBox.drop{
+        #archivebox.drop{
             height: 0px;
             width: 0px;
             transition: all 0.7s ease;
@@ -191,20 +184,17 @@
         
     
     
-        #archiveBox.dragover #archiveIcon {
+        #archivebox.dragover #archiveIcon {
         font-size: 2em; 
-        /* padding: 50% 35%; */
         transition: font-size 0.7s ease; 
         }
-        #archiveDiv{
+        #archivediv{
             display: none;               
             transition: opacity 0.7s ease;
         }
         .cardbox{
-            /* border-radius: 15px; */
             box-shadow: 2px 3px 3px grey;
-            padding: 5px;
-            /* background-color: rgba(20, 188, 168, 0.2); */
+            padding: 5px; 
         }
         
         .cardbox:hover{
@@ -224,11 +214,30 @@
             color: black;
             
         }
+        @media (min-width: 768px) {
+            /* Add this style for the archive icon */
+            #archiveIcon.selected {
+                display: block;
+            }
+        }
+        #archiveIcon.selected {
+            display: block;
+        }
+        
+        /* Adjust the position of the icon */
+        #archiveIcon.selected {
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            z-index: 9999; /* Ensure it's above other elements */
+        }
+        
     </style>
 <body>
     <br>
     <h3 style="text-align:center;">DASHBOARD</h3>
-    <div class="row">
+    <div class="row" style="padding:20px;">
         <section class="card col-md-3 ml-5">
             <div class="row">
                 <div class="col-md-8">
@@ -260,38 +269,6 @@
             </div>
         </section>
     </div>
-    {% comment %} <div class="first1">
-        <section class="card">
-            <div class="row">
-                <div class="col-md-8">
-                    <h4>Total Profit <br>$95,595</h4>
-                </div>
-                <div class="market-update-right">
-                    <i class="fa fa-money-bill-trend-up"></i>
-                </div>
-            </div>
-        </section>
-        <section class="card">
-            <div class="row">
-                <div class="col-md-8">
-                    <h4>Total Expenses <br>$12,789</h4>
-                </div>
-                <div class="market-update-right">
-                    <i class="fa fa-bar-chart"></i>
-                </div>
-            </div>
-        </section>
-        <section class="card">
-            <div class="row">
-                <div class="col-md-8">
-                    <h4>New Users <br>13,984</h4>
-                </div>
-                <div class="market-update-right">
-                    <i class="fa fa-users"></i>
-                </div>
-            </div>
-        </section>
-    </div> {% endcomment %}
     <main class="container mainc">
         <section id="revenue" class="card">
             <h2>Revenue</h2>
@@ -302,7 +279,7 @@
             <canvas id="leadGenerationChart" width="400" height="200"></canvas>
         </section>
     </main><br><br>
-    <div class="row">
+    <div class="row" style="padding:20px;">
         <section id="user-activity" class="card col-md-4 ml-5 mr-1">
             <h2 style="text-align:center">User Activity</h2>
             <canvas id="userActivityChart" width="300" height="100"></canvas>
@@ -356,70 +333,95 @@
             </div>
         </section>
     </div><br><br>
-    <!-- archive box -->
-<div class="row mt-5" id="archiveDiv"  >
-    <div id="archiveBox" class="col d-flex justify-content-center" >
-        <i id="archiveIcon" class="fa-solid fa-box-archive fa-fade fa-xl" style="color: orangered;"></i>
+    {% comment %} archive box  {% endcomment %}
+    <div class="row mt-5" id="archivediv"  >
+        <div id="archivebox" class="col d-flex justify-content-center" >
+            <i id="archiveIcon" class="fa-solid fa-box-archive fa-fade fa-xl" style="color: red;"></i>
+        </div>
     </div>
-</div>
-    {% comment %} <div class="acard">
-        <section class="card cardbox">
-            <div class="card-body" style="background-color: #e69191;border-radius:10px;">
+{% comment %} archive cards {% endcomment %}
+    <div class=" col-md justify-content-center  py-5" style="display: flex;flex-wrap: wrap;justify-content: start;">
+
+        <div class="mx-md-3" style"gap:20px;">
+            <div class="card draggable cardbox mt-4" draggable="true">       
+                <div class="card-body" style="margin-top: 20px;background-color: #e69191;border-radius:10px;gap:20px" >
                 <h4 class="card-title">$ 0.00</h4>
                 <h5 class="card-subtitle mb-2 text-muted">Free Trial</h5>
-                <h6>No Extra Benifits</h6>
+                <h6>No Extra Benefits</h6>
                 <h6>Valid for 7 Days</h6>
-                <a href="#" class="card-link" style="color:green;">Purchase</a>
-              </div>
-        </section>
-        <section class="card cardbox">
-            <div class="card-body" style="background-color: #91e6a3;border-radius:10px;">
-                <h4 class="card-title">$ 0.00</h4>
-                <h5 class="card-subtitle mb-2 text-muted">Free Trial</h5>
-                <h6>No Extra Benifits</h6>
-                <h6>Valid for 7 Days</h6>
-                <a href="#" class="card-link" style="color:green;">Purchase</a>
-              </div>
-        </section>
-        <section class="card cardbox">
-            <div class="card-body" style="background-color: #f5d0d0;border-radius:10px;">
-                <h4 class="card-title">$ 0.00</h4>
-                <h5 class="card-subtitle mb-2 text-muted">Free Trial</h5>
-                <h6>No Extra Benifits</h6>
-                <h6>Valid for 7 Days</h6>
-                <a href="#" class="card-link" style="color:green;">Purchase</a>
-              </div>
-        </section>
-    </div> {% endcomment %}
-    <div class="row">
-        <section class="card cardbox col-md-3 ml-5 mr-2">
+                </div>
+                <center> <a href="#" class="btn p-3 w-100 " >Purchase</a> </center>
+            </div>
+        </div>
+
+        <div class="mx-md-3" style"gap:20px;">
+            <div class="card draggable cardbox mt-4" draggable="true">       
+                <div class="card-body" style="margin-top: 20px;background-color: #91e6a3;border-radius:10px;gap:20px" >
+                    <h4 class="card-title">$ 49.70</h4>
+                    <h5 class="card-subtitle mb-2 text-muted">Standard</h5>
+                    <h6>No Extra Benefits</h6>
+                    <h6>Valid for 1 Month</h6>
+                </div>
+                <center> <a href="#" class="btn p-3 w-100 " >Purchase</a> </center>
+            </div>
+        </div>
+
+        <div class="mx-md-3" style"gap:20px;">
+            <div class="card draggable cardbox mt-4" draggable="true">       
+                <div class="card-body" style="margin-top: 20px;background-color: #f5d0d0;border-radius:10px;gap:20px" >
+                    <h4 class="card-title">$ 70.64</h4>
+                    <h5 class="card-subtitle mb-2 text-muted">Premium</h5>
+                    <h6>No Extra Benefits</h6>
+                    <h6>Valid for 3 Months</h6>
+                </div>
+                <center> <a href="#" class="btn p-3 w-100 " >Purchase</a> </center>
+            </div>
+        </div>
+
+        <div class="mx-md-3" style"gap:20px;">
+            <div class="card draggable cardbox mt-4" draggable="true">       
+                <div class="card-body" style="margin-top: 20px;background-color: #a3e4f0;border-radius:10px;gap:20px" >
+                    <h4 class="card-title">$ 92.05</h4>
+                    <h5 class="card-subtitle mb-2 text-muted">Premium</h5>
+                    <h6>No Extra Benefits</h6>
+                    <h6>Valid for 5 Months</h6>
+                </div>
+                <center> <a href="#" class="btn p-3 w-100 " >Purchase</a> </center>
+            </div>
+        </div>
+    </div>
+        
+
+    {% comment %} <div class="row" style="justify-content: start;">
+        <div class="card cardbox draggable col-md-3 ml-5 mr-2" draggable="true">
             <div class="card-body" style="background-color: #e69191;border-radius:10px;gap:20px">
-                <h4 class="card-title">$ 0.00</h4>
-                <h5 class="card-subtitle mb-2 text-muted">Free Trial</h5>
-                <h6>No Extra Benifits</h6>
+                <h4 class="card-title">$ 0.00 <br>Free Trial</h4>
+                <h6>No Extra Benefits</h6>
                 <h6>Valid for 7 Days</h6>
                 <a href="#" class="card-link" style="color:green;">Purchase</a>
-              </div>
-        </section>
-        <section class="card cardbox col-md-3 ml-5 mr-2">
+            </div>
+        </div>
+        <div class="card draggable cardbox col-md-3 ml-5 mr-2" draggable="true">
             <div class="card-body" style="background-color: #91e6a3;border-radius:10px;">
                 <h4 class="card-title">$ 49.70</h4>
                 <h5 class="card-subtitle mb-2 text-muted">Standard</h5>
-                <h6>No Extra Benifits</h6>
+                <h6>No Extra Benefits</h6>
                 <h6>Valid for 1 Month</h6>
                 <a href="#" class="card-link" style="color:green;">Purchase</a>
-              </div>
-        </section>
-        <section class="card cardbox col-md-3 ml-5 mr-2">
+            </div>
+        </div>
+        <div class="card draggable cardbox col-md-3 ml-5 mr-2" draggable="true">
             <div class="card-body" style="background-color: #f5d0d0;border-radius:10px;">
                 <h4 class="card-title">$ 70.64</h4>
                 <h5 class="card-subtitle mb-2 text-muted">Premium</h5>
-                <h6>No Extra Benifits</h6>
+                <h6>No Extra Benefits</h6>
                 <h6>Valid for 3 Months</h6>
                 <a href="#" class="card-link" style="color:green;">Purchase</a>
-              </div>
-        </section>
-    </div><br><br>
+            </div>
+        </div>
+    </div> {% endcomment %}
+
+    <br><br>
     <script>
         // Revenue Chart
         var revenueData = {
@@ -519,8 +521,8 @@
     </script>
     <script>
         let cards = document.getElementsByClassName('cardbox');
-        let archiveBox = document.getElementById('archiveBox');
-        let archiveDiv = document.getElementById('archiveDiv');
+        let archivebox = document.getElementById('archivebox');
+        let archivediv = document.getElementById('archivediv');
     
         // Load archived cards from local storage
         let archivedCards = JSON.parse(localStorage.getItem('archivedCards')) || [];
@@ -533,29 +535,35 @@
         // Function to handle dropping a card into the archive box
         function handleDrop(selectedCard) {
             selectedCard.style.display = 'none';
-            archiveDiv.style.display = 'none';
+            archivediv.style.display = 'none';
             archivedCards.push(selectedCard.innerHTML); // Save card HTML content
             saveToLocalStorage(); // Save to local storage
+            // Add 'selected' class to archive icon
+            archiveIcon.classList.add('selected');
             
         }
+
     
         for (let card of cards) {
         // Add dragstart event listener for desktop view
         card.addEventListener("dragstart", function(e) {
-            archiveDiv.style.display = 'block'; // Display the archiveDiv
-            archiveDiv.style.opacity = '1';
+            archivediv.style.display = 'block'; // Display the archivediv
+            archivediv.style.opacity = '1';
             let selected = e.target;
     
-            archiveBox.addEventListener("dragover", function(e) {
+            archivebox.addEventListener("dragover", function(e) {
                 e.preventDefault();
             });
     
             card.addEventListener("dragend", function(e) {
-                archiveDiv.style.display = 'none';
+                archivediv.style.display = 'none';
                 selected = null;
+                // Remove 'selected' class from archive icon
+                archiveIcon.classList.remove('selected');
             });
+            
     
-            archiveBox.addEventListener("drop", function(e) {
+            archivebox.addEventListener("drop", function(e) {
                 e.preventDefault();
                 handleDrop(selected);
             });
@@ -565,8 +573,8 @@
         card.addEventListener("touchstart", function(e) {
             // Prevent default touch behavior to avoid issues with touch events
             e.preventDefault();
-            archiveDiv.style.display = 'block'; // Display the archiveDiv
-            archiveDiv.style.opacity = '1';
+            archivediv.style.display = 'block'; // Display the archivediv
+            archivediv.style.opacity = '1';
             // Get the touch target
             let touch = e.touches[0];
             
@@ -591,38 +599,25 @@
             card.style.transform = `translate(${deltaX}px, ${deltaY}px)`;
         });
     
-        // Add touchend event listener
-        // card.addEventListener("touchend", function(e) {
-        //     // Reset card position after touchend
-        //     card.style.transform = 'translate(0px, 0px)';
-        //     archiveDiv.style.display = 'none'; // Hide the archiveDiv after touchend
-        //     handleDrop(card);
-            
-        // });
-    
         card.addEventListener("touchend", function(e) {
         // Reset card position after touchend
         card.style.transform = 'translate(0px, 0px)';
         setTimeout(function() {
-            archiveDiv.style.display = 'none';
-        }, 200); // Hide the archiveDiv after touchend
+            archivediv.style.display = 'none';
+        }, 200); // Hide the archivediv after touchend
         
         // Get the touch position relative to the viewport
         var touchX = e.changedTouches[0].clientX;
         var touchY = e.changedTouches[0].clientY;
         console.log("Touch position: X:", touchX, "Y:", touchY);
         
-        // Check if the touch ended within the boundaries of the archiveDiv
+        // Check if the touch ended within the boundaries of the archivediv
         var elementUnderTouch = document.elementFromPoint(touchX, touchY);
         console.log("Element under touch:", elementUnderTouch);
         if (elementUnderTouch.id === "archiveIcon") {
             handleDrop(card);
         }
     });
-    
-    
-    
-        
         
     }
     
@@ -643,29 +638,21 @@
     // Call the function to hide archived cards when the page loads
     window.addEventListener('load', hideArchivedCards);
     
-    
-    
-    
-    
-    
-        
-       // dragover archivebox style
-    
        let archiveIcon = document.getElementById('archiveIcon');
     
-        archiveBox.addEventListener('dragover', function(event) {
+        archivebox.addEventListener('dragover', function(event) {
             event.preventDefault(); // Prevent default behavior
-            archiveBox.classList.add('dragover'); // Add 'dragover' class
+            archivebox.classList.add('dragover'); // Add 'dragover' class
             
         });
     
-        archiveBox.addEventListener('dragleave', function(event) {
-            archiveBox.classList.remove('dragover'); // Remove 'dragover' class when leaving
+        archivebox.addEventListener('dragleave', function(event) {
+            archivebox.classList.remove('dragover'); // Remove 'dragover' class when leaving
             
         });
     
-        archiveBox.addEventListener('drop', function(event) {
-            archiveBox.classList.remove('dragover'); // Remove 'dragover' class when leaving
+        archivebox.addEventListener('drop', function(event) {
+            archivebox.classList.remove('dragover'); // Remove 'dragover' class when leaving
             
         });
         
