@@ -224,8 +224,8 @@
 <body>
     <br>
     <h3 style="text-align:center;">DASHBOARD</h3>
-    <div class="row" style="padding:20px;">
-        <section class="card col-md-3 ml-5">
+    <div class="row justify-content-center py-5" style="padding:40px;gap:40px;justify-content: start;display: flex;flex-wrap: wrap;">
+        <section class="card col-md-4">
             <div class="row">
                 <div class="col-md-8">
                     <h4>Total Profit <br>$95,595</h4>
@@ -235,7 +235,7 @@
                 </div>
             </div>
         </section>
-        <section class="card col-md-3 ml-5">
+        <section class="card col-md-3">
             <div class="row">
                 <div class="col-md-8">
                     <h4>Total Expenses <br>$12,789</h4>
@@ -245,7 +245,7 @@
                 </div>
             </div>
         </section>
-        <section class="card col-md-3 ml-5">
+        <section class="card col-md-4">
             <div class="row">
                 <div class="col-md-8">
                     <h4>New Users <br>13,984</h4>
@@ -256,7 +256,7 @@
             </div>
         </section>
     </div>
-    <main class="container mainc">
+    <main class="container mainc justify-content-center py-5" style="justify-content: start;display: flex;flex-wrap: wrap;">
         <section id="revenue" class="card">
             <h2>Revenue</h2>
             <canvas id="revenueChart" width="400" height="200"></canvas>
@@ -265,13 +265,13 @@
             <h2>Lead Generation</h2>
             <canvas id="leadGenerationChart" width="400" height="200"></canvas>
         </section>
-    </main><br><br>
-    <div class="row" style="padding:20px;">
-        <section id="user-activity" class="card col-md-4 ml-5 mr-1">
+    </main>
+    <div class="row justify-content-center py-5" style="justify-content: start;display: flex;flex-wrap: wrap;gap:30px;padding:30px;">
+        <section id="user-activity" class="card col-md-4">
             <h2 style="text-align:center">User Activity</h2>
             <canvas id="userActivityChart" width="300" height="100"></canvas>
         </section>
-        <section class="card col-md-4 ml-2 mr-1">
+        <section class="card col-md-4">
             <h2 style="text-align:center">Products</h2>
             <div class="container table-responsive">
                 <table class="table">
@@ -297,7 +297,7 @@
                 </table>
             </div>
         </section>
-        <section class="card col-md-3 ml-2 mr-1">
+        <section class="card col-md-3">
             <div class="row d-flex justify-content-center" style="height: 10vh;">
                 <img src="{% static 'images/user.jpg' %}" class="p-2" width="80" height="80" style="border-radius: 50px;bottom: 50px;position:relative;background-color: white;">
                 <h5>John Doe</h5>
@@ -319,7 +319,7 @@
                 
             </div>
         </section>
-    </div><br><br>
+    </div>
     {% comment %} archive box  {% endcomment %}
     <div class="row mt-5" id="archivediv"  >
         <div id="archivebox" class="col d-flex justify-content-center" >

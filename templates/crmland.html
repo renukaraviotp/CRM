@@ -13,9 +13,9 @@
 }
 body{
   {% comment %} background-color:#d7dfee; {% endcomment %}
-  background-image: url('static/images/bg.jpg');
+  {% comment %} background-image: url('static/images/bg.jpg');
   background-size: cover;
-  background-repeat: no-repeat;
+  background-repeat: no-repeat; {% endcomment %}
 }
 
 .crm {
@@ -264,11 +264,13 @@ $gradient      : #00B5F5;
 }
   .head{
     height: 50vh;
-    text-align:center;
+    text-align:center;.
+    background: rgb(200,238,226);
+    background: linear-gradient(90deg, rgba(200,238,226,1) 40%, rgba(207,220,191,1) 57%, rgba(127,231,167,1) 100%);
   }
 
   .heading {
-    margin-top:70px;
+    {% comment %} margin-top:70px; {% endcomment %}
     text-align:center;
     font-size: 40px;
     font-weight: bold;
@@ -299,6 +301,20 @@ $gradient      : #00B5F5;
 
 .fcn {
   flex: 1; /* Allow the container to grow to fill available space */
+}
+
+.ftr > div{
+  flex: 1; /* Allow the container to grow to fill available space */
+}
+
+@media (max-width: 768px) {
+  .ftr{
+      flex-direction: column;
+  }
+
+  .text-container {
+      text-align: center;
+  }
 }
 
 .text-container {
@@ -377,14 +393,14 @@ h2 {
         {% comment %} <div>
           <img class="d-block fimg image-responsive" width='100%' height='450vh' src="{% static "images/crm.png" %}" alt="First slide">
         </div><br> {% endcomment %}
-        <div class="head">
+        <div class="head" style="border-bottom-left-radius:50%; border-bottom-right-radius:50%;"><br>
           <h3 class="heading">Sell Smarter and Faster</h3>
           <p class="sub-heading">Transform your sales with the world’s No.1 CRM solution.</p>
           <p class="sub-heading">Interpersonal Synergy Suite: Elevating Engagement and Empowering Connections</p>
           <p style="color:green;text-shadow: 1px 1px 2px rgba(0, 0, 0, 0.2);">Crafting Connections and Cultivating Relationships</p>
           <button class="btn btn-primary">Get Started</button>
         </div>
-        
+        <br><br>
       <div class="crm d-flex">
         <h1 class="block-effect" style="--td: 1.2s">
             <div class="block-reveal" style="--bc: linear-gradient(90deg, rgba(2,0,36,1) 0%, rgba(39,97,121,1) 35%, rgba(0,212,255,1) 100%);; --d: .1s">What is CRM?</div>
@@ -402,112 +418,11 @@ h2 {
         </div>
     </div><br>
 
-    
-
-    <div class="d-flex container ftr">
-      <div class="container fcn">
-        <img class="d-block fimg image-responsive" width='80%' height='300vh' src="{% static "images/crmf.png" %}" alt="First slide">
-      </div>
-      <div class="text-container">
-        <h2>Features</h2>
-        <h5>Focused Client Relationship Management Capabilities</h5>
-      </div>
-    </div><br>
-    <br>
-    <div class="container">
-      <div class="container">
-        <div class="row">
-          <div class="col-md-6">
-            <div class="card-container">
-              <div class="card">
-                <div class="card-inner">
-                  <div class="card-front">
-                    <div class="card-body">
-                      <h5 class="card-title">Enable Automation</h5>
-                    </div>
-                  </div>
-                  <div class="card-back">
-                    <div class="card-body">
-                      <p class="card-text">Automate lead creation, team assignment, scheduled activities, and focus on what really matters.</p>
-                    </div>
-                  </div>
-                </div>
-              </div>
-            </div>
-          </div><br>
-      
-      
-          <div class="col-md-6">
-            <div class="card-container">
-              <div class="card">
-                <div class="card-inner">
-                  <div class="card-front">
-                    <div class="card-body">
-                      <h5 class="card-title">AI lead scoring</h5>
-                    </div>
-                  </div>
-                  <div class="card-back">
-                    <div class="card-body">
-                      <p class="card-text">Too many leads? Our AI scores leads to ensure you always work on the right priorities.</p>
-                    </div>
-                  </div>
-                </div>
-              </div>
-            </div>
-          </div><br>
-      
-        </div>
-      </div>
-      <br>
-      <div class="container">
-        <div class="row">
-          <div class="col-md-6">
-            <div class="card-container">
-              <div class="card">
-                <div class="card-inner">
-                  <div class="card-front">
-                    <div class="card-body">
-                      <h5 class="card-title">Reduce manual entry</h5>
-                    </div>
-                  </div>
-                  <div class="card-back">
-                    <div class="card-body">
-                      <p class="card-text">Send quotes in just a few clicks, manage your pipeline by drag-and-dropping, and more.</p>
-                    </div>
-                  </div>
-                </div>
-              </div>
-            </div>
-          </div><br>
-      
-      
-          <div class="col-md-6">
-            <div class="card-container">
-              <div class="card">
-                <div class="card-inner">
-                  <div class="card-front">
-                    <div class="card-body">
-                      <h5 class="card-title">Manage leads</h5>
-                    </div>
-                  </div>
-                  <div class="card-back">
-                    <div class="card-body">
-                      <p class="card-text">Create, acquire, import, nurture, score, etc. Manage all aspects of your leads in a single place.</p>
-                    </div>
-                  </div>
-                </div>
-              </div>
-            </div>
-          </div>
-      
-        </div>
-      </div>
-    </div><br><br><br><br>
     <div class="display-flex fpic container" style="border:box;box-shadow: 0px 0px 20px rgba(0, 0, 0, 0.3);border-radius:10px;">
-      <div class="">
-        <img class="d-block fimg image-responsive" width='100%' height='350vh' src="{% static "images/crmm.png" %}">
+      <div class="" style="background-color:#d2e0f7;">
+        <img class="d-block fimg image-responsive mt-5" width='100%' height='350vh' src="{% static "images/crmfr.png" %}">
       </div>
-      <div style="">
+      <div style="border-bottom-right-radius:100%; border-right-right-radius:30%;background: rgb(200,238,226);background: linear-gradient(90deg, rgba(200,238,226,1) 40%, rgba(207,220,191,1) 57%, rgba(127,231,167,1) 100%);">
         <div class="feature mt-5">
             <h2>Sales</h2>
             <p>Track leads, manage contacts, and streamline your sales process with our CRM's sales management tools.</p>
@@ -525,8 +440,108 @@ h2 {
             <p>Drive targeted marketing campaigns, track campaign performance, and analyze customer behavior to optimize marketing strategies.</p>
         </div>
       </div>
+    </div><br><br>
+    <div style="border-top-left-radius:50%; border-top-right-radius:50%;background: rgb(200,238,226);background: linear-gradient(90deg, rgba(200,238,226,1) 40%, rgba(207,220,191,1) 57%, rgba(127,231,167,1) 100%);">
+      <div class="display-flex container ftr">
+        <div class="container fcn">
+          <img class="d-block fimg image-responsive" width='80%' height='300vh' src="{% static "images/crmf.png" %}">
+        </div>
+        <div class="text-container mt-5">
+          <h2>Features</h2>
+          <h5>Focused Client Relationship Management Capabilities</h5>
+        </div>
+      </div><br>
+      <br>
+      <div class="container">
+        <div class="container">
+          <div class="row">
+            <div class="col-md-6">
+              <div class="card-container">
+                <div class="card">
+                  <div class="card-inner">
+                    <div class="card-front">
+                      <div class="card-body">
+                        <h5 class="card-title">Enable Automation</h5>
+                      </div>
+                    </div>
+                    <div class="card-back">
+                      <div class="card-body">
+                        <p class="card-text">Automate lead creation, team assignment, scheduled activities, and focus on what really matters.</p>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div><br>
+        
+        
+            <div class="col-md-6">
+              <div class="card-container">
+                <div class="card">
+                  <div class="card-inner">
+                    <div class="card-front">
+                      <div class="card-body">
+                        <h5 class="card-title">AI lead scoring</h5>
+                      </div>
+                    </div>
+                    <div class="card-back">
+                      <div class="card-body">
+                        <p class="card-text">Too many leads? Our AI scores leads to ensure you always work on the right priorities.</p>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div><br>
+        
+          </div>
+        </div>
+        <br>
+        <div class="container">
+          <div class="row">
+            <div class="col-md-6">
+              <div class="card-container">
+                <div class="card">
+                  <div class="card-inner">
+                    <div class="card-front">
+                      <div class="card-body">
+                        <h5 class="card-title">Reduce manual entry</h5>
+                      </div>
+                    </div>
+                    <div class="card-back">
+                      <div class="card-body">
+                        <p class="card-text">Send quotes in just a few clicks, manage your pipeline by drag-and-dropping, and more.</p>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div><br>
+        
+        
+            <div class="col-md-6">
+              <div class="card-container">
+                <div class="card">
+                  <div class="card-inner">
+                    <div class="card-front">
+                      <div class="card-body">
+                        <h5 class="card-title">Manage leads</h5>
+                      </div>
+                    </div>
+                    <div class="card-back">
+                      <div class="card-body">
+                        <p class="card-text">Create, acquire, import, nurture, score, etc. Manage all aspects of your leads in a single place.</p>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+        
+          </div>
+        </div>
+      </div><br><br><br><br>
     </div>
-    
     <footer style="margin-top: 100px;">
       <div class="footer">
         <div class="contain">
