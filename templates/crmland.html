@@ -375,25 +375,116 @@ h2 {
   }
 }
 
+.page-banner {
+  position: relative;
+  margin-top: 16px;
+  margin-bottom: 16px;
+  height: 320px;
+  background-color: #F6F5FC;
+  color: #645F88;
+  border-radius: 30px;
+  z-index: 10;
+}
+
+.page-banner.home-banner {
+  height: auto;
+}
+
+.page-banner.home-banner .img-fluid {
+  max-width: 400px;
+  margin: 0 auto;
+}
+
+.page-banner.home-banner .btn-scroll {
+  position: absolute;
+  bottom: -14px;
+  left: 0;
+  right: 0;
+  margin: auto;
+  width: 26px;
+  height: 40px;
+  line-height: 44px;
+  background-color: #fff;
+  color: #645F88;
+  text-align: center;
+  border-radius: 40px;
+  box-shadow: 0 2px 6px rgba(100, 95, 136, 0.24);
+  transition: all .2s ease;
+}
+
+.page-banner.home-banner .btn-scroll:hover {
+  text-decoration: none;
+  background-color: #6C55F9;
+  color: #fff;
+}
+
+@media (min-width: 768px) {
+  .page-banner.home-banner {
+    height: 540px;
+  }
+}
+
+.page-hero.overlay-dark::before,
+.page-banner.overlay-dark::before {
+  content: "";
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: rgba(52, 53, 49, 0.7);
+  z-index: 1;
+}
+
+.page-banner .breadcrumb-item,
+.page-banner .breadcrumb-item a {
+  font-size: 14px;
+}
+
+.home-banner .row > *:first-child {
+  padding-left: 8%;
+}
+
+
+.btn-split {
+  display: inline-flex;
+  align-items: center;
+  border-radius: 40px;
+  padding-top: 6px;
+  padding-bottom: 6px;
+  padding-right: 6px;
+}
+.btn-split .fab {
+  display: inline-block;
+  margin-left: 12px;
+  width: 30px;
+  height: 30px;
+  border-radius: 50%;
+  line-height: 32px;
+  text-align: center;
+  background-color: #fff;
+  color: #6C55F9;
+}
+
 </style>
 <body>
-    {% comment %} <div id="carouselExampleSlidesOnly" class="carousel slide" data-ride="carousel">
-        <div class="carousel-inner">
-          <div class="carousel-item active">
-            <img class="d-block w-100" src="{% static "images/crm.png" %}" alt="First slide">
+    <div class="container">
+      <div class="page-banner home-banner">
+        <div class="row align-items-center flex-wrap-reverse h-100">
+          <div class="col-md-6 py-5 wow fadeInLeft">
+            <h class="mb-4">Sell Smarter and Faster</h>
+            <p class="text-lg text-grey mb-5">Ignite the most powerfull growth engine you have ever built for your company</p>
+            <a href="#" class="btn btn-primary btn-split">Watch Video <div class="fab"><span class="mai-play"></span></div></a>
           </div>
-          <div class="carousel-item">
-            <img class="d-block w-100" src="{% static "images/crm1.jpg" %}" alt="Second slide">
-          </div>
-          <div class="carousel-item">
-            <img class="d-block w-100" src="{% static "images/crm2.jpg" %}" alt="Third slide">
+          <div class="col-md-6 py-5 wow zoomIn">
+            <div class="img-fluid text-center image-responsive">
+              <img src="{% static "images/crm1.jpg" %}" height="300vh" width="100%" alt="">
+            </div>
           </div>
         </div>
-      </div> {% endcomment %}
-        {% comment %} <div>
-          <img class="d-block fimg image-responsive" width='100%' height='450vh' src="{% static "images/crm.png" %}" alt="First slide">
-        </div><br> {% endcomment %}
-        <div class="head" style="border-bottom-left-radius:50%; border-bottom-right-radius:50%;"><br>
+      </div>
+    </div>
+        <div class="head" style="border-bottom-right-radius:100%;"><br>
           <h3 class="heading">Sell Smarter and Faster</h3>
           <p class="sub-heading">Transform your sales with the world’s No.1 CRM solution.</p>
           <p class="sub-heading">Interpersonal Synergy Suite: Elevating Engagement and Empowering Connections</p>
@@ -418,11 +509,22 @@ h2 {
         </div>
     </div><br>
 
-    <div class="display-flex fpic container" style="border:box;box-shadow: 0px 0px 20px rgba(0, 0, 0, 0.3);border-radius:10px;">
-      <div class="" style="background-color:#d2e0f7;">
-        <img class="d-block fimg image-responsive mt-5" width='100%' height='350vh' src="{% static "images/crmfr.png" %}">
+    <div class="display-flex fpic container" style="">
+      <div class="" style="">
+        <img class="d-block fimg image-responsive mt-5" width='100%' height='350vh' src="{% static "images/crmm.png" %}">
       </div>
-      <div style="border-bottom-right-radius:100%; border-right-right-radius:30%;background: rgb(200,238,226);background: linear-gradient(90deg, rgba(200,238,226,1) 40%, rgba(207,220,191,1) 57%, rgba(127,231,167,1) 100%);">
+      {% comment %} <div class="row my-5">
+        <div class="col-md-1"></div>
+        <div class="col-1"></div>
+        <div class="col"><img height="100vh" src="{% static 'images/sale.png' %}" alt=""> <h6>Sales</h6></div>
+        <div class="col"><img height="100vh" src="{% static 'images/cs.jpg' %}" alt=""> <h6>Customer Service</h6></div>
+        <div class="col-md-1"></div>
+        <div class="col-1"></div>
+        <div class="col"><img height="100vh" src="{% static 'images/ts.jpg' %}" alt=""> <h6>Technical Support</h6></div>
+        <div class="col"><img height="100vh" src="{% static 'images/mrkt.webp' %}" alt=""> <h6>Marketing</h6></div>
+        <div class="col-md"></div>
+    </div> {% endcomment %}
+      <div style="">
         <div class="feature mt-5">
             <h2>Sales</h2>
             <p>Track leads, manage contacts, and streamline your sales process with our CRM's sales management tools.</p>
@@ -441,7 +543,7 @@ h2 {
         </div>
       </div>
     </div><br><br>
-    <div style="border-top-left-radius:50%; border-top-right-radius:50%;background: rgb(200,238,226);background: linear-gradient(90deg, rgba(200,238,226,1) 40%, rgba(207,220,191,1) 57%, rgba(127,231,167,1) 100%);">
+    <div style="border-bottom-left-radius:50%; border-top-right-radius:50%;background: rgb(200,238,226);background: linear-gradient(90deg, rgba(200,238,226,1) 40%, rgba(207,220,191,1) 57%, rgba(127,231,167,1) 100%);">
       <div class="display-flex container ftr">
         <div class="container fcn">
           <img class="d-block fimg image-responsive" width='80%' height='300vh' src="{% static "images/crmf.png" %}">
