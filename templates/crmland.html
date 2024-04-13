@@ -12,7 +12,7 @@
   box-sizing: border-box;
 }
 body{
-  {% comment %} background-color:#d7dfee; {% endcomment %}
+  background-color:#d7dfee;
   {% comment %} background-image: url('static/images/bg.jpg');
   background-size: cover;
   background-repeat: no-repeat; {% endcomment %}
@@ -271,7 +271,7 @@ $gradient      : #00B5F5;
 
   .heading {
     {% comment %} margin-top:70px; {% endcomment %}
-    text-align:center;
+    {% comment %} text-align:center; {% endcomment %}
     font-size: 40px;
     font-weight: bold;
     text-transform: uppercase;
@@ -279,7 +279,7 @@ $gradient      : #00B5F5;
     text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.5);
   }
   .sub-heading {
-    text-align:center;
+    {% comment %} text-align:center; {% endcomment %}
     font-size: 20px;
     line-height: 1.5;
     font-style: italic;
@@ -337,7 +337,7 @@ h2 {
 }
 .card{
   box-shadow: 0px 0px 20px rgba(0, 0, 0, 0.3);
-  background-color:#91e6a3;
+  background-color:#b0f5d6;
   border-radius:10px;
   transition: transform 0.2s ease-in-out; 
 }
@@ -375,7 +375,7 @@ h2 {
   }
 }
 
-.page-banner {
+{% comment %} .page-banner {
   position: relative;
   margin-top: 16px;
   margin-bottom: 16px;
@@ -466,30 +466,312 @@ h2 {
   color: #6C55F9;
 }
 
+@-webkit-keyframes fadeInLeft {
+  from {
+    opacity: 0;
+    -webkit-transform: translate3d(-100%, 0, 0);
+    transform: translate3d(-100%, 0, 0);
+  }
+
+  to {
+    opacity: 1;
+    -webkit-transform: translate3d(0, 0, 0);
+    transform: translate3d(0, 0, 0);
+  }
+}
+
+@keyframes fadeInLeft {
+  from {
+    opacity: 0;
+    -webkit-transform: translate3d(-100%, 0, 0);
+    transform: translate3d(-100%, 0, 0);
+  }
+
+  to {
+    opacity: 1;
+    -webkit-transform: translate3d(0, 0, 0);
+    transform: translate3d(0, 0, 0);
+  }
+}
+
+.fadeInLeft {
+  -webkit-animation-name: fadeInLeft;
+  animation-name: fadeInLeft;
+}
+
+@-webkit-keyframes fadeInLeftBig {
+  from {
+    opacity: 0;
+    -webkit-transform: translate3d(-2000px, 0, 0);
+    transform: translate3d(-2000px, 0, 0);
+  }
+
+  to {
+    opacity: 1;
+    -webkit-transform: translate3d(0, 0, 0);
+    transform: translate3d(0, 0, 0);
+  }
+}
+
+@keyframes fadeInLeftBig {
+  from {
+    opacity: 0;
+    -webkit-transform: translate3d(-2000px, 0, 0);
+    transform: translate3d(-2000px, 0, 0);
+  }
+
+  to {
+    opacity: 1;
+    -webkit-transform: translate3d(0, 0, 0);
+    transform: translate3d(0, 0, 0);
+  }
+}
+
+.fadeInLeftBig {
+  -webkit-animation-name: fadeInLeftBig;
+  animation-name: fadeInLeftBig;
+}
+
+@-webkit-keyframes zoomIn {
+  from {
+    opacity: 0;
+    -webkit-transform: scale3d(0.3, 0.3, 0.3);
+    transform: scale3d(0.3, 0.3, 0.3);
+  }
+
+  50% {
+    opacity: 1;
+  }
+}
+
+@keyframes zoomIn {
+  from {
+    opacity: 0;
+    -webkit-transform: scale3d(0.3, 0.3, 0.3);
+    transform: scale3d(0.3, 0.3, 0.3);
+  }
+
+  50% {
+    opacity: 1;
+  }
+}
+
+.zoomIn {
+  -webkit-animation-name: zoomIn;
+  animation-name: zoomIn;
+}
+@-webkit-keyframes zoomInDown {
+  from {
+    opacity: 0;
+    -webkit-transform: scale3d(0.1, 0.1, 0.1) translate3d(0, -1000px, 0);
+    transform: scale3d(0.1, 0.1, 0.1) translate3d(0, -1000px, 0);
+    -webkit-animation-timing-function: cubic-bezier(0.55, 0.055, 0.675, 0.19);
+    animation-timing-function: cubic-bezier(0.55, 0.055, 0.675, 0.19);
+  }
+
+  60% {
+    opacity: 1;
+    -webkit-transform: scale3d(0.475, 0.475, 0.475) translate3d(0, 60px, 0);
+    transform: scale3d(0.475, 0.475, 0.475) translate3d(0, 60px, 0);
+    -webkit-animation-timing-function: cubic-bezier(0.175, 0.885, 0.32, 1);
+    animation-timing-function: cubic-bezier(0.175, 0.885, 0.32, 1);
+  }
+}
+
+@keyframes zoomInDown {
+  from {
+    opacity: 0;
+    -webkit-transform: scale3d(0.1, 0.1, 0.1) translate3d(0, -1000px, 0);
+    transform: scale3d(0.1, 0.1, 0.1) translate3d(0, -1000px, 0);
+    -webkit-animation-timing-function: cubic-bezier(0.55, 0.055, 0.675, 0.19);
+    animation-timing-function: cubic-bezier(0.55, 0.055, 0.675, 0.19);
+  }
+
+  60% {
+    opacity: 1;
+    -webkit-transform: scale3d(0.475, 0.475, 0.475) translate3d(0, 60px, 0);
+    transform: scale3d(0.475, 0.475, 0.475) translate3d(0, 60px, 0);
+    -webkit-animation-timing-function: cubic-bezier(0.175, 0.885, 0.32, 1);
+    animation-timing-function: cubic-bezier(0.175, 0.885, 0.32, 1);
+  }
+}
+
+.zoomInDown {
+  -webkit-animation-name: zoomInDown;
+  animation-name: zoomInDown;
+}
+
+@-webkit-keyframes zoomInLeft {
+  from {
+    opacity: 0;
+    -webkit-transform: scale3d(0.1, 0.1, 0.1) translate3d(-1000px, 0, 0);
+    transform: scale3d(0.1, 0.1, 0.1) translate3d(-1000px, 0, 0);
+    -webkit-animation-timing-function: cubic-bezier(0.55, 0.055, 0.675, 0.19);
+    animation-timing-function: cubic-bezier(0.55, 0.055, 0.675, 0.19);
+  }
+
+  60% {
+    opacity: 1;
+    -webkit-transform: scale3d(0.475, 0.475, 0.475) translate3d(10px, 0, 0);
+    transform: scale3d(0.475, 0.475, 0.475) translate3d(10px, 0, 0);
+    -webkit-animation-timing-function: cubic-bezier(0.175, 0.885, 0.32, 1);
+    animation-timing-function: cubic-bezier(0.175, 0.885, 0.32, 1);
+  }
+}
+
+@keyframes zoomInLeft {
+  from {
+    opacity: 0;
+    -webkit-transform: scale3d(0.1, 0.1, 0.1) translate3d(-1000px, 0, 0);
+    transform: scale3d(0.1, 0.1, 0.1) translate3d(-1000px, 0, 0);
+    -webkit-animation-timing-function: cubic-bezier(0.55, 0.055, 0.675, 0.19);
+    animation-timing-function: cubic-bezier(0.55, 0.055, 0.675, 0.19);
+  }
+
+  60% {
+    opacity: 1;
+    -webkit-transform: scale3d(0.475, 0.475, 0.475) translate3d(10px, 0, 0);
+    transform: scale3d(0.475, 0.475, 0.475) translate3d(10px, 0, 0);
+    -webkit-animation-timing-function: cubic-bezier(0.175, 0.885, 0.32, 1);
+    animation-timing-function: cubic-bezier(0.175, 0.885, 0.32, 1);
+  }
+}
+
+.zoomInLeft {
+  -webkit-animation-name: zoomInLeft;
+  animation-name: zoomInLeft;
+}
+
+@-webkit-keyframes zoomInRight {
+  from {
+    opacity: 0;
+    -webkit-transform: scale3d(0.1, 0.1, 0.1) translate3d(1000px, 0, 0);
+    transform: scale3d(0.1, 0.1, 0.1) translate3d(1000px, 0, 0);
+    -webkit-animation-timing-function: cubic-bezier(0.55, 0.055, 0.675, 0.19);
+    animation-timing-function: cubic-bezier(0.55, 0.055, 0.675, 0.19);
+  }
+
+  60% {
+    opacity: 1;
+    -webkit-transform: scale3d(0.475, 0.475, 0.475) translate3d(-10px, 0, 0);
+    transform: scale3d(0.475, 0.475, 0.475) translate3d(-10px, 0, 0);
+    -webkit-animation-timing-function: cubic-bezier(0.175, 0.885, 0.32, 1);
+    animation-timing-function: cubic-bezier(0.175, 0.885, 0.32, 1);
+  }
+}
+
+@keyframes zoomInRight {
+  from {
+    opacity: 0;
+    -webkit-transform: scale3d(0.1, 0.1, 0.1) translate3d(1000px, 0, 0);
+    transform: scale3d(0.1, 0.1, 0.1) translate3d(1000px, 0, 0);
+    -webkit-animation-timing-function: cubic-bezier(0.55, 0.055, 0.675, 0.19);
+    animation-timing-function: cubic-bezier(0.55, 0.055, 0.675, 0.19);
+  }
+
+  60% {
+    opacity: 1;
+    -webkit-transform: scale3d(0.475, 0.475, 0.475) translate3d(-10px, 0, 0);
+    transform: scale3d(0.475, 0.475, 0.475) translate3d(-10px, 0, 0);
+    -webkit-animation-timing-function: cubic-bezier(0.175, 0.885, 0.32, 1);
+    animation-timing-function: cubic-bezier(0.175, 0.885, 0.32, 1);
+  }
+}
+
+.zoomInRight {
+  -webkit-animation-name: zoomInRight;
+  animation-name: zoomInRight;
+}
+
+@-webkit-keyframes zoomInUp {
+  from {
+    opacity: 0;
+    -webkit-transform: scale3d(0.1, 0.1, 0.1) translate3d(0, 1000px, 0);
+    transform: scale3d(0.1, 0.1, 0.1) translate3d(0, 1000px, 0);
+    -webkit-animation-timing-function: cubic-bezier(0.55, 0.055, 0.675, 0.19);
+    animation-timing-function: cubic-bezier(0.55, 0.055, 0.675, 0.19);
+  }
+
+  60% {
+    opacity: 1;
+    -webkit-transform: scale3d(0.475, 0.475, 0.475) translate3d(0, -60px, 0);
+    transform: scale3d(0.475, 0.475, 0.475) translate3d(0, -60px, 0);
+    -webkit-animation-timing-function: cubic-bezier(0.175, 0.885, 0.32, 1);
+    animation-timing-function: cubic-bezier(0.175, 0.885, 0.32, 1);
+  }
+}
+
+@keyframes zoomInUp {
+  from {
+    opacity: 0;
+    -webkit-transform: scale3d(0.1, 0.1, 0.1) translate3d(0, 1000px, 0);
+    transform: scale3d(0.1, 0.1, 0.1) translate3d(0, 1000px, 0);
+    -webkit-animation-timing-function: cubic-bezier(0.55, 0.055, 0.675, 0.19);
+    animation-timing-function: cubic-bezier(0.55, 0.055, 0.675, 0.19);
+  }
+
+  60% {
+    opacity: 1;
+    -webkit-transform: scale3d(0.475, 0.475, 0.475) translate3d(0, -60px, 0);
+    transform: scale3d(0.475, 0.475, 0.475) translate3d(0, -60px, 0);
+    -webkit-animation-timing-function: cubic-bezier(0.175, 0.885, 0.32, 1);
+    animation-timing-function: cubic-bezier(0.175, 0.885, 0.32, 1);
+  }
+}
+
+.zoomInUp {
+  -webkit-animation-name: zoomInUp;
+  animation-name: zoomInUp;
+} {% endcomment %}
+button:hover{
+  background:white;
+}
+
+.page-section {
+  position: relative;
+  padding-top: 80px;
+  padding-bottom: 80px;
+  color: #898798;
+  overflow: hidden;
+}
+.card-service {
+  display: block;
+  margin: 16px auto;
+  padding: 32px 20px;
+  max-width: 300px;
+  text-align: center;
+  color: #898798;
+  border-radius: 8px;
+  box-shadow: 0 3px 12px rgba(95, 92, 120, 0.12);
+}
+
+.card-service .header {
+  margin-bottom: 24px;
+}
 </style>
 <body>
-    <div class="container">
+    {% comment %} <div class="container">
       <div class="page-banner home-banner">
         <div class="row align-items-center flex-wrap-reverse h-100">
           <div class="col-md-6 py-5 wow fadeInLeft">
-            <h class="mb-4">Sell Smarter and Faster</h>
-            <p class="text-lg text-grey mb-5">Ignite the most powerfull growth engine you have ever built for your company</p>
-            <a href="#" class="btn btn-primary btn-split">Watch Video <div class="fab"><span class="mai-play"></span></div></a>
+            <h3 class="mb-4 heading">Sell Smarter and Faster</h3>
+            <p class="text-lg text-grey mb-5 sub-heading">Transform your sales with the world’s No.1 CRM solution.</p>
+            <a href="#" class="btn btn-primary btn-split">Get Started <div class="fab"><span class="mai-play"></span></div></a>
           </div>
           <div class="col-md-6 py-5 wow zoomIn">
             <div class="img-fluid text-center image-responsive">
-              <img src="{% static "images/crm1.jpg" %}" height="300vh" width="100%" alt="">
+              <img src="{% static "images/crmft.png" %}" height="300vh" width="100%" alt="">
             </div>
           </div>
         </div>
       </div>
-    </div>
-        <div class="head" style="border-bottom-right-radius:100%;"><br>
+    </div> {% endcomment %}
+        <div class="head" style="border-bottom-right-radius:100%;">
           <h3 class="heading">Sell Smarter and Faster</h3>
           <p class="sub-heading">Transform your sales with the world’s No.1 CRM solution.</p>
           <p class="sub-heading">Interpersonal Synergy Suite: Elevating Engagement and Empowering Connections</p>
-          <p style="color:green;text-shadow: 1px 1px 2px rgba(0, 0, 0, 0.2);">Crafting Connections and Cultivating Relationships</p>
-          <button class="btn btn-primary">Get Started</button>
+          {% comment %} <p style="color:green;text-shadow: 1px 1px 2px rgba(0, 0, 0, 0.2);">Crafting Connections and Cultivating Relationships</p> {% endcomment %}
+          <button class="btn btn-primary" style="background-color:#129930;width:200px;transition: 1s;"><b>Get Started</b></button><br><br><br><br>
         </div>
         <br><br>
       <div class="crm d-flex">
@@ -509,21 +791,60 @@ h2 {
         </div>
     </div><br>
 
-    <div class="display-flex fpic container" style="">
+    <div class="container heading">
+      <h1 style="text-align:center;"><i>Learn More About CRM...</i></h1>
+    </div>
+
+    <div class="page-section">
+      <div class="container">
+        <div class="row">
+          <div class="col-lg-4">
+            <div class="card-service wow fadeInUp" style="background-color:white;">
+              <div class="header">
+                <iframe style="border-radius:10px;" width="250" height="215" src="https://www.youtube.com/embed/sQD7kaZ5h0s?si=_xBG8jQc3HtogH8o" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>
+                {% comment %} <img src="{% static "images/sale.png" %}" height="100vh" width="100%" alt=""> {% endcomment %}
+              </div>
+              <div class="body">
+                <h5 class="text-secondary">What is CRM?</h5>
+                <p>What is Customer Relationship Management</p>
+                <a href="service.html" class="btn btn-primary">Watch More</a>
+              </div>
+            </div>
+          </div>
+          <div class="col-lg-4">
+            <div class="card-service wow fadeInUp" style="background-color:white;">
+              <div class="header">
+                <iframe style="border-radius:10px;" width="250" height="215" src="https://www.youtube.com/embed/ti5hVZ6BrA8?si=OqkzotBWAM5aee3A" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>
+                {% comment %} <img src="{% static "images/ts.jpg" %}" height="100vh" width="100%" alt=""> {% endcomment %}
+              </div>
+              <div class="body">
+                <h5 class="text-secondary">Process of CRM!!!</h5>
+                <p>Process of Customer Relationship Management</p>
+                <a href="service.html" class="btn btn-primary">Watch More</a>
+              </div>
+            </div>
+          </div>
+          <div class="col-lg-4">
+            <div class="card-service wow fadeInUp" style="background-color:white;">
+              <div class="header">
+                <iframe style="border-radius:10px;" width="250" height="215" src="https://www.youtube.com/embed/mUf7JRPFAkE?si=DHb_qx6j1BXxAOdY" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>
+                {% comment %} <img src="{% static "images/mrkt.webp" %}" height="100vh" width="100%" alt=""> {% endcomment %}
+              </div>
+              <div class="body">
+                <h5 class="text-secondary">Types of CRM!!!</h5>
+                <p>Customer Relationship Management Types</p>
+                <a href="service.html" class="btn btn-primary">Watch More</a>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div> <!-- .container -->
+    </div>
+
+    <div class="display-flex fpic container" style="background-color:white;border:box;box-shadow: 0px 0px 20px rgba(0, 0, 0, 0.3);border-radius:10px;">
       <div class="" style="">
         <img class="d-block fimg image-responsive mt-5" width='100%' height='350vh' src="{% static "images/crmm.png" %}">
       </div>
-      {% comment %} <div class="row my-5">
-        <div class="col-md-1"></div>
-        <div class="col-1"></div>
-        <div class="col"><img height="100vh" src="{% static 'images/sale.png' %}" alt=""> <h6>Sales</h6></div>
-        <div class="col"><img height="100vh" src="{% static 'images/cs.jpg' %}" alt=""> <h6>Customer Service</h6></div>
-        <div class="col-md-1"></div>
-        <div class="col-1"></div>
-        <div class="col"><img height="100vh" src="{% static 'images/ts.jpg' %}" alt=""> <h6>Technical Support</h6></div>
-        <div class="col"><img height="100vh" src="{% static 'images/mrkt.webp' %}" alt=""> <h6>Marketing</h6></div>
-        <div class="col-md"></div>
-    </div> {% endcomment %}
       <div style="">
         <div class="feature mt-5">
             <h2>Sales</h2>
