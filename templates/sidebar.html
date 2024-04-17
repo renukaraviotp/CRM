@@ -12,15 +12,15 @@
     <script src="https://kit.fontawesome.com/30ecc6e708.js" crossorigin="anonymous"></script>
 </head>
 <style>
-    .bcolor{
+    .bgclr{
         background: rgb(200,238,226);
         background: linear-gradient(90deg, rgba(200,238,226,1) 40%, rgba(207,220,191,1) 57%, rgba(127,231,167,1) 100%);
         
     }
-    .nv{
+    .nvb{
         font-family: Verdana, Geneva, Tahoma, sans-serif;
     }
-    .nv a{
+    .nvb a{
         color: black;
     }
     .navitm {
@@ -45,7 +45,7 @@
     }
 
     .sidebar {
-    width: 250px; 
+    width: 200px; 
     min-height: 100vh; 
     position: fixed; 
     top: 0; 
@@ -90,23 +90,21 @@
 <body>
     <div class="container-fluid" >
         <div class="row" >
-            <!-- Collapse Button -->
             <button style="z-index: 101;background-color: transparent;position: fixed;" class="btn d-md-none" type="button" data-toggle="collapse" data-target="#sidebarCollapse" aria-expanded="false" aria-controls="sidebarCollapse">
                 <span class="" style="z-index: 101;"><i class="fa-solid fa-bars"></i></span>
             </button>
     
-            <!-- Sidebar Column -->
-            <div class="col-md-2 collapse d-md-block bcolor" id="sidebarCollapse" style="z-index: 100;">
+            <div class="col-md-2 collapse d-md-block bgclr" id="sidebarCollapse" style="z-index: 100;">
                 <div class="sidebar " >
-                    <ul class="nav flex-column nv bcolor" style="min-height: 100vh;" id="ul">
+                    <ul class="nav flex-column nvb bgclr" style="min-height: 100vh;" id="ul">
                         <li class="nav-item px-3 my-3">
                             <a style="text-decoration: none;" href="{% url "landpage" %}"><img src="{% static 'images/logo.png' %}" alt="logo" height="100"></a>   
                         </li>
                         <li class="nav-item px-3">
-                            <a class="nav-link navitm" id="link4" href="{% url "dashboard" %}">Dashboard</a>
+                            <a class="nav-link navitm" id="link4" href="{% url "dashboardc" %}">Dashboard</a>
                         </li>
                         <li class="nav-item px-3">
-                            <a class="nav-link navitm" id="link5" href="{% url "archive" %}">Archive</a>
+                            <a class="nav-link navitm" id="link5" href="{% url "archivec" %}">Archive</a>
                         </li>
                         <li class="nav-item ">
                             <a class="nav-link navitm ml-md-3" href="#">Apps</a>
@@ -123,7 +121,6 @@
                     </ul>
                 </div>
             </div>
-            <!-- Main Content Column -->
             <div class="col-md-10" style="background-color: #d7dfee;" id="mainBody">
                 {% block content %}
                 {% endblock %}
