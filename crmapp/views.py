@@ -5,7 +5,9 @@ def landpage(request):
     return render(request,'crmland.html')
 
 def dashboardc(request):
-    return render(request,'dashboard.html')
+    dashboard = request.GET.get('dashboard',' ').split(',')
+    return render(request,'dashboard.html',{'dashboard':dashboard})
 
 def archivec(request):
-    return render(request,'archive.html')
+    item_ids = request.GET.get('item_ids',' ').split(',')
+    return render(request,'archive.html', {'item_ids': item_ids})

@@ -283,9 +283,9 @@
         </div>
     </div>
 {% comment %} archive cards {% endcomment %}
-    <div class=" col justify-content-center  py-5" style="display: flex;flex-wrap: wrap;justify-content: start;">
+    {% comment %} <div class=" col justify-content-center  py-5" style="display: flex;flex-wrap: wrap;justify-content: start;">
 
-        <div class="mx-md-3" style"gap:20px;z-index:1000;">
+        <div class="mx-md-3" style"gap:20px;z-index:9999;">
             <div class="card draggable cardbox mt-4 ml-2" draggable="true">       
                 <div class="card-body" style="margin-top: 20px;background-color: #91e6a3;border-radius:10px;gap:20px" >
                 <h4 class="card-title">$ 0.00</h4>
@@ -332,8 +332,87 @@
                 <center> <a href="#" class="btn p-3 w-100 " >Purchase</a> </center>
             </div>
         </div>
-    </div>
+    </div> {% endcomment %}
 
+    <div class="container mt-3 mb-3 pt-1">
+        <h1 class="text-center mt-3 mb-3 display-4"><u></u></h1>
+        <div class="row">
+          
+          {% if '1' not in dashboard %}
+          <div class="col-sm-3 mb-3">
+            <div id="draggable1" class="card" draggable="true" >
+              <div class="side front" >
+                  <div class="card-body" style="background-color: #91e6a3;">
+                    <h4 class="card-title">$ 0.00</h4>
+                    <h5 class="card-subtitle mb-2 text-muted">Free Trial</h5>
+                    <h6>No Extra Benefits</h6>
+                    <h6>Valid for 7 Days</h6>
+                </div>
+         
+           
+              </div>
+             
+            </div>
+          </div>
+          {% endif %}
+          
+  
+  
+          {% if '2' not in dashboard %}
+          <div class="col-sm-3 mb-3">
+            <div id="draggable2" class="card" draggable="true" >
+              <div class="side front">
+                  <div class="card-body" style="background-color: #91e6a3">
+                    <h4 class="card-title">$ 49.70</h4>
+                    <h5 class="card-subtitle mb-2 text-muted">Standard</h5>
+                    <h6>No Extra Benefits</h6>
+                    <h6>Valid for 1 Month</h6>
+                    </div>
+              </div>
+              
+            </div>
+          </div>
+          {% endif %}
+  
+          {% if '3' not in dashboard %}
+          <div class="col-sm-3 mb-3">
+            <div id="draggable3" class="card" draggable="true">
+              <div class="side front">
+                  <div class="card-body" style="background-color: #91e6a3;">
+                    <h4 class="card-title">$ 70.64</h4>
+                    <h5 class="card-subtitle mb-2 text-muted">Premium</h5>
+                    <h6>No Extra Benefits</h6>
+                    <h6>Valid for 3 Months</h6>
+                    </div>
+              </div>
+             
+            </div>
+          </div>
+          {% endif %}
+  
+  
+          {% if '4' not in dashboard %}
+        <div class="col-sm-3 mb-3">
+          <div id="draggable4" class="card" draggable="true">
+            <div class="side front">
+              <div class="card-body" style="background-color: #91e6a3;">
+                <h4 class="card-title">$ 92.05</h4>
+                <h5 class="card-subtitle mb-2 text-muted">Premium</h5>
+                <h6>No Extra Benefits</h6>
+                <h6>Valid for 5 Months</h6>
+                </div>
+            </div>
+          
+        </div>
+        {% endif %} 
+        </div>
+      </div>
+
+      <div id="popup" class="popup">
+        <div class="popup-content">
+          <img src="https://img.freepik.com/premium-vector/trash-can-logo_609277-204.jpg" style="height: 50px; width: 50px;"  class="img-fluid">
+        </div>
+      </div>
 
     <br><br>
     <script>
@@ -435,7 +514,7 @@
             }
         });
     </script>
-    <script>
+    {% comment %} <script>
         let cards = document.getElementsByClassName('cardbox');
         let archivebox = document.getElementById('archivebox');
         let archivediv = document.getElementById('archivediv');
@@ -572,8 +651,76 @@
             
         });
         
-    </script>
+    </script> {% endcomment %}
+    <script>
+
+        document.querySelectorAll('.card').forEach(card => {
+                  card.addEventListener('dragstart', function(e) {
+                      e.dataTransfer.setData('text/plain', card.id);
+                      document.getElementById('popup').style.display = "block"; // Show the popup
+                  });
+              });
+          
+              document.getElementById('popup').addEventListener('dragover', function(e) {
+                  e.preventDefault();
+              });
+          
+              document.getElementById('popup').addEventListener('drop', function(e) {
+                  e.preventDefault();
+                  document.getElementById('popup').style.display = "none"; // Hide the popup
+                  var data = e.dataTransfer.getData('text/plain');
+                  if (data) {
+                      var card = document.getElementById(data);
+                      card.parentNode.removeChild(card); // Remove the dropped card from the page
+                  }
+              });
+          
+              document.addEventListener('dragover', function(e) {
+                  e.preventDefault();
+              });
+              
+              document.addEventListener('drop', function(e) {
+                  e.preventDefault();
+                  document.getElementById('popup').style.display = "none"; // Hide the popup
+              });
     
+    
+    
+    
+    
+              // Function to retrieve card IDs from the first page and redirect to the second page with item_ids
+              function redirectToSecondPage() {
+                  var cardIds = [];
+                  document.querySelectorAll('.card').forEach(card => {
+                      var cardId = card.id.replace('draggable', '');
+                      cardIds.push(cardId);
+                  });
+                  var linkToSecondPage = '{% url "archivec" %}?item_ids=' + cardIds.join(',');
+                  window.location.href = linkToSecondPage; // Redirect to the second page with card IDs
+              }
+    
+    
+    
+              document.addEventListener("DOMContentLoaded", function() {
+                const enquiryBox = document.getElementById("enquiry-box");
+                const enquiryLink = document.getElementById("enquiry-link");
+                const closeEnquiryBox = document.getElementById("close-enquiry-box");
+                
+                enquiryLink.addEventListener("click", function(event) {
+                    event.preventDefault();
+                    enquiryBox.style.display = "block";
+                });
+            
+                closeEnquiryBox.addEventListener("click", function() {
+                    enquiryBox.style.display = "none";
+                });
+            });
+    
+    
+    
+    
+    
+    </script>
     
 </body>
 {% endblock %}
