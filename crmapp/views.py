@@ -4,6 +4,9 @@ from django.shortcuts import render
 def landpage(request):
     return render(request,'crmland.html')
 
+def dashboard(request):
+    return render(request,'dashboard.html')
+
 def dashboardc(request):
     dashboard = request.GET.get('dashboard',' ').split(',')
     return render(request,'dashboard.html',{'dashboard':dashboard})
