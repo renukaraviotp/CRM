@@ -205,8 +205,17 @@
     font-size: calc(var(--size) / 5);
     color: var(--primary);
   }
-
-    </style>
+  h2 {
+    font-size: 1.5rem;
+    margin-bottom: 10px;
+}
+.cardf {
+    background-color: #fff;
+    border-radius: 10px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    padding: 20px;
+}
+</style>
 </head>
 
 <body >
@@ -219,14 +228,14 @@
                         <!-- Title -->
                         <br>
                         <br>
-                        <h1 class="h2 mb-0 ls-tight">Dashboard</h1>
+                        <h1 class="h2 mb-0 ls-tight ml-5">Dashboard</h1>
                         
                     </div>
             </div>
         </div>
     </header>
     <div class="row justify-content-center" style="padding:40px;gap:40px;justify-content: start;display: flex;flex-wrap: wrap;">
-        <section class="card col-md-4 py-4" style="padding:10px;">
+        <section class="card cardf col-md-4 py-4" style="padding:10px;">
             <div class="row">
                 <div class="col-md-8">
                     <h4>Total Profit <br>$95,595</h4>
@@ -236,7 +245,7 @@
                 </div>
             </div>
         </section>
-        <section class="card col-md-3 py-4" style="padding:10px;">
+        <section class="card cardf col-md-3 py-4" style="padding:10px;">
             <div class="row">
                 <div class="col-md-8">
                     <h4>New Users <br>13,984</h4>
@@ -246,7 +255,7 @@
                 </div>
             </div>
         </section>
-        <section class="card col-md-4 py-4" style="padding:10px;">
+        <section class="card cardf col-md-4 py-4" style="padding:10px;">
             <div class="row">
                 <div class="col-md-8">
                     <h4>Total Expenses <br>$12,789</h4>
@@ -258,11 +267,11 @@
         </section>
     </div>
     <div class="row justify-content-center py-5" style="justify-content: start;display: flex;flex-wrap: wrap;gap:30px;padding:30px;">
-        <section id="user-activity" class="card col-md-4">
+        <section id="user-activity" class="card cardf col-md-4 ml-1">
             <h2 style="text-align:center">User Activity</h2>
             <canvas id="userActivityChart" width="300" height="100"></canvas>
         </section>
-        <section class="card col-md-4">
+        <section class="card cardf col-md-4">
             <h2 style="text-align:center">Products</h2>
             <div class="container table-responsive">
                 <table class="table">
@@ -288,7 +297,7 @@
                 </table>
             </div>
         </section>
-        <section class="card col-md-3">
+        <section class="card cardf col-md-3">
             <div class="row d-flex justify-content-center" style="height: 10vh;">
                 <img src="{% static 'images/user.jpg' %}" class="p-2" width="80" height="80" style="border-radius: 50px;bottom: 50px;position:relative;background-color: white;">
                 <h5>John Doe</h5>
@@ -311,16 +320,16 @@
             </div>
         </section>
     </div>
-    <main class="container mainc justify-content-center" style="justify-content: start;display: flex;flex-wrap: wrap;gap:30px;padding:30px;">
-        <section id="revenue" class="card">
+    <div class="container row justify-content-center py-5 ml-2" style="padding:40px;gap:40px;justify-content: start;display: flex;flex-wrap: wrap;">
+        <section id="revenue" class="card cardf col-md-6 ml-2">
             <h2>Revenue</h2>
-            <canvas id="revenueChart" width="400" height="200"></canvas>
+            <canvas id="revenueChart" width="500" height="300"></canvas>
         </section>
-        <section class="card">
+        <section class="card cardf col">
             <h2>Lead Generation</h2>
-            <canvas id="leadGenerationChart" width="400" height="200"></canvas>
+            <canvas id="leadGenerationChart" width="400" height="300"></canvas>
         </section>
-    </main>
+    </div>
         <br><br>
      
        
@@ -510,14 +519,6 @@
 
 
     <script>
-
-
-    
-
-
-
-
-
         document.querySelectorAll('.crd').forEach(card => {
                   card.addEventListener('dragstart', function(e) {
                       e.dataTransfer.setData('text/plain', card.id);
@@ -579,12 +580,7 @@
                     enquiryBox.style.display = "none";
                 });
             });
-    
-    
-    
-    
-    
-        </script>
+    </script>
 
 
 
